@@ -106,7 +106,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <BreakingTicker news={news.slice(0, 5)} />
+      {/* <BreakingTicker news={news.slice(0, 5)} /> */}
 
       <HeroSection featured={featured} />
       <AdBanner imageUrl="/1941257753831324090.jpg" />

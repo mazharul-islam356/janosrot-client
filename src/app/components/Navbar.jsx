@@ -48,19 +48,9 @@ export default function NewsNavbar() {
     <header className="w-full border-b border-[#cfc7ba] bg-[#f6f1e8]">
       <div className="max-w-7xl mx-auto">
         {/* TOP BAR */}
-        <div className="hidden lg:grid grid-cols-3 items-center border-b border-[#cfc7ba] min-h-[95px]">
+        <div className="hidden lg:grid grid-cols-3 items-center border-b border-[#cfc7ba] min-h-22">
           {/* LEFT */}
           <div className="flex items-center gap-4 border-r border-[#cfc7ba] h-full px-6">
-            <div className="flex items-center gap-2 text-[#1d1d1d]">
-              <Globe size={18} strokeWidth={1.7} />
-
-              <span className="font-medium text-[17px] tracking-wide">
-                Paperio
-              </span>
-            </div>
-
-            <div className="w-px h-10 bg-[#cfc7ba]" />
-
             <div className="flex flex-col leading-none">
               <span className="text-[15px] font-medium text-black">
                 {formattedDate}
@@ -75,37 +65,31 @@ export default function NewsNavbar() {
           {/* CENTER */}
           <div className="flex items-center justify-center h-full">
             <Link href="/">
-              <h1 className="text-[56px] leading-none font-black tracking-tight uppercase text-[#1b1b1b]">
-                NEWS PORTAL
-              </h1>
+              <Image
+                src="/janosrot.png"
+                width={400}
+                height={400}
+                alt="logo"
+                className="object-cover w-32"
+              />
             </Link>
           </div>
 
           {/* RIGHT */}
           <div className="flex items-center justify-end gap-4 border-l border-[#cfc7ba] h-full px-6">
-            <button className="flex items-center gap-2 border border-[#1d1d1d] rounded-full px-5 py-2.5 hover:bg-black hover:text-white transition-all duration-300">
-              <PenLine size={16} />
-
-              <span className="text-[15px] font-medium">
-                {lang === "en" ? "Write News" : "নিউজ লিখুন"}
-              </span>
-            </button>
-
             <button
               onClick={toggleLanguage}
-              className="text-sm font-medium hover:opacity-70"
+              className="flex cursor-pointer items-center gap-2 text-sm font-medium hover:opacity-70 transition"
             >
-              {lang === "en" ? "বাংলা" : "English"}
-            </button>
-
-            <button className="w-11 h-11 rounded-full overflow-hidden border border-[#cfc7ba]">
               <Image
-                src="/avatar.jpg"
-                alt="user"
-                width={44}
-                height={44}
-                className="w-full h-full object-cover"
+                src={lang === "en" ? "/flag.png" : "/united-kingdom.png"}
+                width={500}
+                height={500}
+                alt={lang === "en" ? "Bangladesh Flag" : "UK Flag"}
+                className="w-6 h-6 rounded-full border border-gray-300 object-cover"
               />
+
+              {lang === "en" ? "বাংলা" : "English"}
             </button>
           </div>
         </div>
@@ -128,7 +112,7 @@ export default function NewsNavbar() {
         </div>
 
         {/* CATEGORY NAV */}
-        <nav className="flex items-center justify-between border-b border-[#cfc7ba]">
+        <nav className="flex sticky top-1 items-center justify-between border-b border-[#cfc7ba]">
           {/* LEFT */}
           <div className="flex items-center">
             {/* CATEGORY BUTTON */}

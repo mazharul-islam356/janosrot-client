@@ -3,119 +3,191 @@
 import { getBreakingNews, getFeaturedNews } from "@/service/newsApi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import Image from "next/image";
 import { useLanguage } from "@/context/lagnguageContext";
 import { getTranslatedValue } from "@/hooks/getTranslatedValue";
+import { MoveUpRight } from "lucide-react";
 
 export default function HeroSection() {
   const [breaking, setBreaking] = useState([]);
   const [featured, setFeatured] = useState([]);
+
   const { lang } = useLanguage();
-  // breaking api
+
   useEffect(() => {
     const fetchBreaking = async () => {
       try {
         const data = await getBreakingNews();
-        setBreaking(data);
+        setBreaking(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error("Error fetching breaking news:", error);
+        console.error(error);
       }
     };
 
     fetchBreaking();
   }, []);
 
-  // featured api
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
         const data = await getFeaturedNews();
-        setFeatured(data);
+        setFeatured(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error("Error fetching featured news:", error);
+        console.error(error);
       }
     };
 
     fetchFeatured();
   }, []);
 
-  const t = {
-    readMore: {
-      en: "Read more →",
-      bn: "বিস্তারিত পড়ুন →",
-    },
-  };
+  const mainNews = featured?.[0];
+  const leftNews = featured?.[1];
+
   return (
-    <div className="grid max-w-7xl mx-auto grid-cols-1 lg:grid-cols-3 gap-6">
-      {/* LEFT: Featured */}
-      <div className="lg:col-span-2 relative">
-        <Swiper
-          modules={[Autoplay, Pagination, Navigation]}
-          autoplay={{ delay: 4000 }}
-          loop={true}
-          pagination={{ clickable: true }}
-          className="md:rounded-md overflow-hidden"
-        >
-          {featured.map((item, index) => (
-            <SwiperSlide key={index}>
-              <div className="relative">
-                <Image
-                  width={1200}
-                  height={800}
-                  alt={item.title.bn}
-                  src={item.featuredImage[0]}
-                  className="w-full md:h-105 h-60 object-cover"
-                />
+    <section className="max-w-7xl mx-auto px-3 lg:px-0 pb-5 pt-3">
+      <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.8fr_1fr] border border-[#cfc7ba] bg-[#f6f1e8]">
+        {/* LEFT CARD */}
+        <div className="border-b lg:border-b-0 lg:border-r border-[#cfc7ba] p-5">
+          {leftNews && (
+            <Link href={`/news/${leftNews?._id}`}>
+              <div className="group">
+                {/* TITLE */}
+                <h2 className="text-[28px] leading-[1.15] font-bold text-[#1c1c1c]  hover:opacity-80 transition">
+                  {getTranslatedValue(leftNews?.title, lang)}
+                </h2>
 
-                {/* overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                {/* META */}
+                <div className="flex items-center gap-3 text-[13px] text-gray-600 mt-4 border-b border-[#cfc7ba] pb-4">
+                  <span>Art</span>
 
-                {/* content */}
-                <div className="absolute bottom-0 p-6 text-white">
-                  <h1 className="text-2xl md:text-3xl font-bold leading-snug">
-                    {getTranslatedValue(item.title, lang)}
-                  </h1>
+                  <span className="w-1 h-1 rounded-full bg-red-500" />
 
-                  <Link href={`/news/${item._id}`}>
-                    <span className="inline-block my-3 text-sm underline hover:text-blue-300 transition">
-                      {t.readMore[lang]}
-                    </span>
-                  </Link>
+                  <span>24/12/2024</span>
+
+                  <MoveUpRight size={16} className="ml-auto text-gray-500" />
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
 
-      {/* RIGHT: Trending */}
-      <div className="flex flex-col md:gap-2 gap-0">
-        {breaking?.slice(0, 4).map((item) => (
-          <Link key={item?._id} href={`/news/${item._id}`}>
-            <div className="flex gap-3 group cursor-pointer bg-white border border-gray-100 md:rounded-lg rounded-xs p-2 hover:shadow-md transition">
-              <Image
-                width={500}
-                height={500}
-                alt={item.title.bn}
-                src={item.featuredImage[0]}
-                className="md:w-28 md:h-20 w-24 h-16 object-cover md:rounded-sm rounded-xs flex-shrink-0"
-              />
+                {/* DESCRIPTION */}
+                <p className="mt-5 text-[15px] leading-7 text-[#444] line-clamp-6">
+                  {getTranslatedValue(leftNews?.description, lang)}
+                </p>
 
-              <div className="flex flex-col justify-center">
-                <p className="text-sm font-medium line-clamp-2 group-hover:text-red-600 font-bangla">
-                  {getTranslatedValue(item.title, lang)}
+                {/* IMAGE */}
+                <div className="mt-5 overflow-hidden">
+                  <Image
+                    src={leftNews?.featuredImage?.[0]}
+                    alt="news"
+                    width={800}
+                    height={500}
+                    className="w-full h-[220px] object-cover group-hover:scale-[1.03] transition duration-500"
+                  />
+                </div>
+
+                {/* FOOT TEXT */}
+                <p className="mt-5 text-[14px] leading-7 text-[#444] line-clamp-6">
+                  {getTranslatedValue(leftNews?.content, lang)}
                 </p>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          )}
+        </div>
+
+        {/* CENTER MAIN NEWS */}
+        <div className="border-b lg:border-b-0 lg:border-r border-[#cfc7ba] p-4 lg:p-5">
+          {mainNews && (
+            <Link href={`/news/${mainNews?._id}`}>
+              <div className="group">
+                {/* TOP BOX */}
+                <div className="border border-[#cfc7ba] p-5">
+                  <h1 className="text-[34px] md:text-[40px] leading-[1.1] font-bold text-[#1a1a1a] ">
+                    {getTranslatedValue(mainNews?.title, lang)}
+                  </h1>
+
+                  {/* META */}
+                  <div className="flex items-center gap-3 text-[13px] text-gray-600 mt-3">
+                    <div className="w-10 h-[1px] bg-black" />
+
+                    <span>Catastrophic</span>
+
+                    <span className="w-1 h-1 rounded-full bg-red-500" />
+
+                    <span>Milea Sandy E</span>
+
+                    <span className="w-1 h-1 rounded-full bg-red-500" />
+
+                    <span>24/12/2024</span>
+
+                    <MoveUpRight size={16} className="ml-auto text-gray-500" />
+                  </div>
+                </div>
+
+                {/* IMAGE */}
+                <div className="mt-4 overflow-hidden">
+                  <Image
+                    src={mainNews?.featuredImage?.[0]}
+                    alt="main-news"
+                    width={1200}
+                    height={800}
+                    className="w-full h-52 md:h-72 object-cover group-hover:scale-[1.02] transition duration-500"
+                  />
+                </div>
+
+                {/* DESCRIPTION */}
+                <div className="pt-5">
+                  <p className="text-[15px] text-ellipsis line-clamp-6 leading-7 text-[#444]">
+                    {getTranslatedValue(mainNews?.content, lang)}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          )}
+        </div>
+
+        {/* RIGHT TRENDING */}
+        <div className="p-5">
+          {/* HEADER */}
+          <div className="flex items-center justify-between border-b border-[#cfc7ba] pb-4">
+            <h3 className="text-xl  font-bold text-[#1b1b1b]">
+              {lang === "en" ? "Popular Article Now" : "জনপ্রিয় সংবাদ"}
+            </h3>
+
+            <span className="text-[12px] border border-[#ff7a59] text-[#ff7a59] px-2 py-1 rounded-full">
+              20 Now
+            </span>
+          </div>
+
+          {/* LIST */}
+          <div className="divide-y divide-[#cfc7ba] mt-3">
+            {breaking?.slice(0, 5).map((item, index) => (
+              <Link key={item?._id} href={`/news/${item?._id}`}>
+                <div className="flex py-2 group">
+                  {/* NUMBER */}
+                  <div className="min-w-[45px]">
+                    <span className="text-xl leading-none italic font-bold text-[#1b1b1b] ">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="flex-1">
+                    <h4 className="text-base leading-[1.3] font-semibold text-[#222] group-hover:opacity-70 transition line-clamp-2">
+                      {getTranslatedValue(item?.title, lang)}
+                    </h4>
+
+                    <div className="flex items-center gap-3 mt-1 text-[12px] text-gray-500">
+                      <span>20 Dec 2024</span>
+
+                      <span>,</span>
+
+                      <span>John Statman</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
