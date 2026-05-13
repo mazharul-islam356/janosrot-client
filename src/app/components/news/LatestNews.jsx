@@ -38,10 +38,14 @@ export default function LatestNews() {
   };
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 md:py-10 pt-4">
+    <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 pt-2">
       {/* Title */}
-      <h2 className="text-xl sm:text-2xl text-center font-bold mb-6 border-y border-red-700 border-dashed text-red-800 py-3">
+      <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y border-[#cfc7ba] bg-white text-gray-600 py-3 flex items-center justify-center gap-3">
+        <span className="w-2 h-2 rounded-full animate-pulse bg-gray-500"></span>
+
         {title.title[lang]}
+
+        <span className="w-2 h-2 rounded-full animate-pulse bg-gray-500"></span>
       </h2>
 
       {/* Grid */}
@@ -49,7 +53,7 @@ export default function LatestNews() {
         {latest.slice(0, 4).map((item, i) => (
           <div
             key={i}
-            className="group bg-white rounded-xs md:rounded-md overflow-hidden shadow-sm hover:shadow-xl transition duration-300"
+            className="group bg-white rounded-xs overflow-hidden shadow-sm hover:shadow-sm transition duration-300"
           >
             {/* Image */}
             <Link href={`/news/${item?._id || "#"}`}>
@@ -76,25 +80,20 @@ export default function LatestNews() {
               </Link>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">
+              <p className="text-xs sm:text-sm text-gray-600 line-clamp-3">
                 {getTranslatedValue(item?.content, lang) ||
                   "No description available"}
               </p>
 
               {/* Footer */}
-              <div className="flex items-center justify-between md:mt-2">
-                <span className="text-[11px] sm:text-xs text-gray-500">
-                  {item?.time || "Just now"}
-                </span>
+              <div className="flex items-center justify-between ">
+                <span className="text-[11px] sm:text-xs text-gray-500"></span>
 
-                <Link
-                  className="hidden md:block"
-                  href={`/news/${item?._id || "#"}`}
-                >
-                  <span className="text-[11px] sm:text-sm underline hover:text-blue-500 transition">
-                    {t.readMore[lang]}
+                <div className="hidden md:block">
+                  <span className="text-[11px]  hover:text-gray-500 transition">
+                    {item?.time || "Just now"}
                   </span>
-                </Link>
+                </div>
               </div>
             </div>
           </div>

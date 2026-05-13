@@ -105,11 +105,11 @@ export default function HomePage() {
     .slice(0, 5);
 
   return (
-    <div>
+    <div className="bg-[#f6f1e8]">
       {/* <BreakingTicker news={news.slice(0, 5)} /> */}
 
       <HeroSection featured={featured} />
-      <AdBanner imageUrl="/1941257753831324090.jpg" />
+      {/* <AdBanner imageUrl="/1941257753831324090.jpg" /> */}
       <LatestNews />
       <Buissness />
       <PoliticsPage />
