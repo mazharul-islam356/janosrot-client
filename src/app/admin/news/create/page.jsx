@@ -8,6 +8,10 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Plus } from "lucide-react";
 import Image from "next/image";
+import { Upload } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import { ImageIcon } from "lucide-react";
+import { X } from "lucide-react";
 
 const initialState = {
   title_bn: "",
@@ -114,7 +118,7 @@ export default function CreateNews() {
 
       // console.log(data);
       // return;
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/news`, data, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL_V2}/news`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -133,18 +137,20 @@ export default function CreateNews() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto md:p-6 pt-10 space-y-6">
+    <div className="max-w-7xl poppins mx-auto md:p-6 pt-10 space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* LEFT */}
         <div className="md:col-span-3 space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
+              className="rounded-sm"
               name="title_bn"
               value={form.title_bn}
               onChange={handleChange}
               placeholder="Title (Bangla)"
             />
             <Input
+              className="rounded-sm"
               name="title_en"
               value={form.title_en}
               onChange={handleChange}
@@ -170,53 +176,126 @@ export default function CreateNews() {
               value={form.content_bn}
               onChange={handleChange}
               placeholder="Content (Bangla)"
+              className="min-h-37.5 rounded-sm max-h-100 resize-y"
             />
+
             <Textarea
               rows={6}
               name="content_en"
               value={form.content_en}
               onChange={handleChange}
               placeholder="Content (English)"
+              className="min-h-37.5 max-h-100 rounded-sm resize-y"
             />
           </div>
         </div>
 
         {/* RIGHT */}
 
-        <div className="border p-4 col-span-1 rounded-sm bg-gray-50 space-y-3">
+        <div className="border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
           <input
             type="file"
             id="img"
             className="hidden"
             onChange={handleFileChange}
+            accept="image/*"
+            multiple
           />
 
           <label
             htmlFor="img"
-            className="block border border-dashed p-4 text-center cursor-pointer text-sm"
+            className="relative flex flex-col items-center justify-center w-full p-6 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-200 hover:bg-gray-50 border-gray-300 hover:border-blue-400 bg-gray-50/30 min-h-[200px]"
           >
-            Upload image
-          </label>
-
-          <div className="grid grid-cols-2 gap-2">
-            {previews.map((img, i) => (
-              <div key={i} className="relative">
-                <Image
-                  alt="news_image"
-                  width={500}
-                  height={500}
-                  src={img}
-                  className="h-20 w-full object-cover rounded-sm border"
+            {previews.length === 0 ? (
+              // Empty state - show upload UI
+              <div className="flex flex-col items-center justify-center text-center">
+                <Upload
+                  className="w-10 h-10 mb-3 text-gray-400"
+                  strokeWidth={1.5}
                 />
+                <p className="mb-1 text-sm font-medium text-gray-700">
+                  Click to upload
+                </p>
+                <p className="text-xs text-gray-500">
+                  PNG, JPG, GIF up to 10MB
+                </p>
+              </div>
+            ) : (
+              // Preview mode - show images inside upload area
+              <div className="w-full space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <ImageIcon
+                      className="w-4 h-4 text-teal-500"
+                      strokeWidth={1.5}
+                    />
+                    <span className="text-xs font-medium text-gray-600">
+                      {previews.length} image{previews.length !== 1 ? "s" : ""}{" "}
+                      selected
+                    </span>
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      // Clear all images function
+                      previews.forEach((_, i) => handleRemoveImage(i));
+                    }}
+                    className="flex items-center gap-1 text-xs text-red-500 hover:text-red-700 transition-colors"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                    Clear all
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2">
+                  {previews.map((img, i) => (
+                    <div
+                      key={i}
+                      className="group relative aspect-square rounded-lg overflow-hidden bg-gray-100 border border-gray-200"
+                    >
+                      <Image
+                        width={500}
+                        height={500}
+                        alt={`news_image_${i}`}
+                        src={img}
+                        className="h-full w-full object-cover"
+                      />
+
+                      {/* Remove button overlay */}
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleRemoveImage(i);
+                        }}
+                        className="absolute top-1 right-1 bg-red-500 hover:bg-red-600 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-md"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+
+                      {/* Image count badge */}
+                      <div className="absolute bottom-1 left-1 bg-black/60 backdrop-blur-sm text-white text-xs px-1.5 py-0.5 rounded">
+                        {i + 1}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Add more button */}
                 <button
-                  onClick={() => handleRemoveImage(i)}
-                  className="absolute top-1 right-1 text-xs bg-red-500 text-white px-2 rounded-sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("img").click();
+                  }}
+                  className="w-full mt-2 py-2 text-sm text-teal-600 hover:text-teal-700 font-medium transition-colors flex items-center justify-center gap-1"
                 >
-                  X
+                  <Upload className="w-4 h-4" />
+                  Add more images
                 </button>
               </div>
-            ))}
-          </div>
+            )}
+          </label>
         </div>
       </div>
       <div className="space-y-4 grid md:grid-cols-2 gap-x-4">
@@ -412,12 +491,14 @@ export default function CreateNews() {
           {/* writer name */}
           <div className="md:flex items-center gap-2 space-y-2 md:space-y-0">
             <Input
+              className="rounded-sm"
               name="writer_bn"
               value={form.writer_bn}
               onChange={handleChange}
               placeholder="Writer Name (Bangla)"
             />
             <Input
+              className="rounded-sm"
               name="writer_en"
               value={form.writer_en}
               onChange={handleChange}
@@ -439,6 +520,7 @@ export default function CreateNews() {
 
           {/* PUBLISH DATE */}
           <Input
+            className="rounded-sm"
             type="datetime-local"
             name="publishedAt"
             value={form.publishedAt}
@@ -470,6 +552,7 @@ export default function CreateNews() {
           </select>
 
           <Input
+            className="rounded-sm"
             name="tags"
             value={form.tags}
             onChange={handleChange}
@@ -478,7 +561,11 @@ export default function CreateNews() {
         </div>
       </div>
 
-      <Button onClick={handleSubmit} disabled={loading} className="w-full py-5">
+      <Button
+        onClick={handleSubmit}
+        disabled={loading}
+        className="w-full bg-teal-700 rounded-sm cursor-pointer hover:font-semibold transition duration-300 py-5"
+      >
         <Plus />
         {loading ? "Publishing..." : "Create News"}
       </Button>

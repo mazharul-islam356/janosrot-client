@@ -49,11 +49,11 @@ const data = {
       url: "/",
       icon: House,
     },
-    {
-      title: "Dashboard",
-      url: "/admin/dashboard",
-      icon: LayoutDashboard,
-    },
+    // {
+    //   title: "Dashboard",
+    //   url: "/admin/dashboard",
+    //   icon: LayoutDashboard,
+    // },
     {
       title: "News",
       icon: Newspaper,
@@ -75,7 +75,7 @@ const data = {
 
 export function AppSidebar(props) {
   return (
-    <Sidebar className="p-4" collapsible="offcanvas" {...props}>
+    <Sidebar className="p-4 poppins" collapsible="offcanvas" {...props}>
       {/* Header */}
       <SidebarMenu>
         <SidebarMenuItem>
@@ -85,10 +85,10 @@ export function AppSidebar(props) {
               className="flex items-center gap-2 mb-5"
             >
               <Image
-                src="/newsportal.png"
+                src="/janosrot.png"
                 alt="news portal"
-                width={60}
-                height={60}
+                width={100}
+                height={100}
                 className="rounded-sm"
               />
             </Link>
