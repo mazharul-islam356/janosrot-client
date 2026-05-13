@@ -14,6 +14,7 @@ import World from "../components/news/World";
 import Entertainment from "../components/Entertainment";
 import National from "./news/National";
 import ThreeCategorySection from "../components/ThreeCategory";
+import SportsSection from "../components/SportsSection";
 export const categories = [
   { name: "Politics", slug: "politics" },
   { name: "Technology", slug: "technology" },
@@ -115,8 +116,8 @@ export default function HomePage() {
       <World />
       <Entertainment />
       {/* <National /> */}
+      <SportsSection />
       <AdBanner imageUrl="/15921561955530599699.gif" />
-
       <FeaturedGrid />
       <ForYouSection />
       <ThreeCategorySection />

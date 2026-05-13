@@ -45,7 +45,7 @@ export default function FeaturedGrid() {
   );
 
   return (
-    <section className="bg-[#e9e3e3] py-8 mt-14">
+    <section className="bg-[#ffffff] py-8 mt-14">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {data.map((item, index) => (
           <div
@@ -68,18 +68,15 @@ export default function FeaturedGrid() {
             <div className="absolute inset-0 bg-black/40"></div>
 
             {/* Content */}
-            <div className="absolute inset-0 p-4 flex flex-col justify-end">
+            <div className="absolute inset-0  flex flex-col justify-center items-center">
               {/* Category */}
-              <span className="text-yellow-400 text-sm font-semibold mb-1">
+              <span className="text-white text-lg md:text-2xl font-semibold mb-1">
                 {typeof item?.category === "object"
                   ? item?.category?.[lang]
                   : item?.category}
               </span>
 
               {/* Description */}
-              <h3 className="text-white text-sm leading-snug font-medium line-clamp-2">
-                {getTranslatedValue(item?.content, lang)}
-              </h3>
             </div>
           </div>
         ))}

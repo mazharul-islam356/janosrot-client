@@ -69,7 +69,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white border-t mt-8">
+    <footer className="bg-[#e1ded8] border-t pt-8">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -104,7 +104,7 @@ export default function Footer() {
 
             <ul className="space-y-2 text-sm text-gray-600">
               {categories[lang].map((item, i) => (
-                <li key={i} className="hover:text-red-800 cursor-pointer">
+                <li key={i} className="hover:text-teal-800 cursor-pointer">
                   {item}
                 </li>
               ))}
@@ -119,7 +119,7 @@ export default function Footer() {
 
             <ul className="space-y-2 text-sm text-gray-600">
               {links[lang].map((item, i) => (
-                <li key={i} className="hover:text-red-800 cursor-pointer">
+                <li key={i} className="hover:text-teal-800 cursor-pointer">
                   {item}
                 </li>
               ))}
@@ -152,9 +152,9 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder={t.emailPlaceholder[lang]}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-l-sm focus:outline-none focus:border-red-800 text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-l-sm focus:outline-none focus:border-teal-800 text-sm"
                 />
-                <button className="bg-red-800 text-white px-4 rounded-r-sm hover:bg-red-700 transition">
+                <button className="bg-teal-800 text-white px-4 rounded-r-sm hover:bg-teal-700 transition">
                   {t.subscribe[lang]}
                 </button>
               </div>
@@ -162,17 +162,16 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* BOTTOM */}
-        <div className="border-t mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-3">
+        {/* <div className="border-t mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-3">
           <p>
             © {new Date().getFullYear()} Nirvoybarta. {t.rights[lang]}
           </p>
 
           <p>
             {t.developedBy[lang]}{" "}
-            <span className="text-red-800 font-medium">Mazharul Islam</span>
+            <span className="text-teal-800 font-medium">Mazharul Islam</span>
           </p>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
@@ -181,7 +180,7 @@ export default function Footer() {
 /* SOCIAL ICON */
 function Social({ icon }) {
   return (
-    <div className="w-9 h-9 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-red-800 hover:text-white hover:border-red-800 transition cursor-pointer">
+    <div className="w-9 h-9 flex items-center justify-center border border-gray-300 rounded-full text-gray-600 hover:bg-teal-800 hover:text-white hover:border-teal-800 transition cursor-pointer">
       {icon}
     </div>
   );
