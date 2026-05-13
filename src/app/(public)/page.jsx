@@ -5,10 +5,6 @@ import { api } from "@/lib/api";
 import BreakingTicker from "../components/news/BreakingTicker";
 import HeroSection from "../components/HeroBanner";
 import PoliticsPage from "../components/Politics";
-
-import National from "../components/National";
-
-import Buissness from "./news/Buissness";
 import AdBanner from "../components/AdBanner";
 import FeaturedGrid from "../components/news/FeaturedGrid";
 import ForYouSection from "./news/ForYouSection";
@@ -16,6 +12,8 @@ import AdBanner2 from "../components/AdBanner2";
 import LatestNews from "../components/news/LatestNews";
 import World from "../components/news/World";
 import Entertainment from "../components/Entertainment";
+import National from "./news/National";
+import ThreeCategorySection from "../components/ThreeCategory";
 export const categories = [
   { name: "Politics", slug: "politics" },
   { name: "Technology", slug: "technology" },
@@ -111,16 +109,17 @@ export default function HomePage() {
       <HeroSection featured={featured} />
       {/* <AdBanner imageUrl="/1941257753831324090.jpg" /> */}
       <LatestNews />
-      <Buissness />
+      <National />
       <PoliticsPage />
       <AdBanner2 imageUrl="/larevad.jpg" />
       <World />
       <Entertainment />
-      <National />
+      {/* <National /> */}
       <AdBanner imageUrl="/15921561955530599699.gif" />
 
       <FeaturedGrid />
       <ForYouSection />
+      <ThreeCategorySection />
     </div>
   );
 }

@@ -85,10 +85,13 @@ export default function World() {
     <div className="py-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4">
         {/* TITLE */}
-        <h2 className="text-xl sm:text-2xl font-bold border-b-2 border-red-500 inline-block mb-6 sm:mb-8">
-          {t.title[lang]}
-        </h2>
+        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y bg-white border-[#cfc7ba]  text-gray-600 py-3 flex items-center justify-center gap-3">
+          <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
 
+          {t.title[lang]}
+
+          <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
+        </h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* LEFT */}
           <div className="space-y-4 hidden md:block sm:space-y-5">
@@ -115,7 +118,7 @@ export default function World() {
                     width={120}
                     height={80}
                     alt={getTranslatedValue(news?.title, lang)}
-                    className="rounded object-cover w-[90px] sm:w-[120px] h-[60px] sm:h-[80px]"
+                    className="object-cover w-[90px] sm:w-[120px] h-[60px] sm:h-[80px]"
                   />
                 </Link>
               </div>
@@ -132,11 +135,11 @@ export default function World() {
                       src={featured?.featuredImage?.[0] || "/placeholder.jpg"}
                       fill
                       alt={getTranslatedValue(featured?.title, lang)}
-                      className="rounded object-cover"
+                      className="object-cover"
                     />
                   </Link>
 
-                  <div className="absolute top-2.5 left-3 bg-red-600 p-2 rounded-full text-white text-xs">
+                  <div className="absolute top-2.5 left-3 bg-gray-600 p-2 rounded-full text-white text-xs">
                     📷
                   </div>
                 </div>
@@ -160,7 +163,7 @@ export default function World() {
             {rightNews.map((news, i) => (
               <div
                 key={i}
-                className="flex gap-3 sm:gap-4 border-b pb-3 sm:pb-4"
+                className="flex flex-row-reverse gap-3 sm:gap-4 border-b pb-3 sm:pb-4"
               >
                 <div className="flex-1">
                   <Link href={`/news/${news?._id || "#"}`}>
@@ -180,7 +183,7 @@ export default function World() {
                     width={120}
                     height={80}
                     alt={getTranslatedValue(news?.title, lang)}
-                    className="rounded object-cover w-[90px] sm:w-[120px] h-[60px] sm:h-[80px]"
+                    className="object-cover w-[90px] sm:w-[120px] h-[60px] sm:h-[80px]"
                   />
                 </Link>
               </div>

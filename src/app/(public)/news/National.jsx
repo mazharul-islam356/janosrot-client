@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const Business = () => {
+const National = () => {
   const [business, setBusiness] = useState([]);
   const [loading, setLoading] = useState(true);
   const { lang } = useLanguage();
@@ -88,7 +88,7 @@ const Business = () => {
   const bottomNews = business.slice(2, 6);
 
   return (
-    <section className="bg-[#f5f5f3] py-8 lg:pb-12">
+    <section className="py-8 lg:pb-12">
       <div className="max-w-7xl mx-auto ">
         <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y border-[#cfc7ba] bg-white text-gray-600 py-3 flex items-center justify-center gap-3">
           <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
@@ -98,7 +98,7 @@ const Business = () => {
           <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
         </h2>
         {/* TOP SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 border-b border-gray-300 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 pb-5">
           {/* LEFT */}
           <div>
             <Link href={`/news/${heroLeft?._id}`}>
@@ -213,4 +213,4 @@ const Business = () => {
   );
 };
 
-export default Business;
+export default National;

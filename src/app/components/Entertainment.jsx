@@ -12,6 +12,8 @@ export default function Entertainment() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const { lang } = useLanguage();
+
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -32,33 +34,22 @@ export default function Entertainment() {
   }, []);
 
   const newsData = entertainment?.data || [];
-  const { lang } = useLanguage();
 
   const mainNews = newsData[0];
-  const sideNews = newsData.slice(1, 4);
-  const gridNews = newsData.slice(4, 8);
+  const sideNews = newsData.slice(1, 3);
+  const listNews = newsData.slice(3, 13);
+  const bottomNews = newsData.slice(13, 17);
 
   // ---------------- LOADING ----------------
   if (loading) {
     return (
-      <div className="bg-gray-100 min-h-screen animate-pulse">
-        <div className="max-w-7xl mx-auto px-4 py-10">
-          <div className="h-6 w-40 bg-gray-300 mx-auto mb-8"></div>
+      <div className="max-w-7xl mx-auto px-4 py-8 animate-pulse">
+        <div className="h-10 bg-gray-300 w-full mb-5"></div>
 
-          <div className="grid lg:grid-cols-4 gap-5">
-            <div className="lg:col-span-3 h-72 bg-gray-300 rounded"></div>
-            <div className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-20 bg-gray-300 rounded"></div>
-              ))}
-            </div>
+        <div className="grid lg:grid-cols-12 gap-5">
+          <div className="lg:col-span-8 h-[420px] bg-gray-300"></div>
 
-            <div className="lg:col-span-4 grid md:grid-cols-4 gap-5 mt-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-40 bg-gray-300 rounded"></div>
-              ))}
-            </div>
-          </div>
+          <div className="lg:col-span-4 h-[420px] bg-gray-300"></div>
         </div>
       </div>
     );
@@ -67,95 +58,144 @@ export default function Entertainment() {
   // ---------------- ERROR ----------------
   if (error) {
     return (
-      <div className="bg-gray-100 min-h-screen flex items-center justify-center text-red-500">
-        {error}
-      </div>
+      <div className="max-w-7xl mx-auto px-4 py-10 text-red-500">{error}</div>
     );
   }
 
   const t = {
-    readMore: {
+    title: {
       en: "Entertainment",
       bn: "বিনোদন",
     },
+    popular: {
+      en: "Most Read",
+      bn: "সর্বাধিক পঠিত",
+    },
   };
+
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 py-5 md:py-10">
-        <h2 className="flex items-center justify-center gap-3 text-2xl font-bold text-center md:mb-8 mb-5">
-          <span className="w-2 h-2 bg-red-700 rounded-full"></span>
-
-          <span className="px-3 border-x border-red-700">
-            {t.readMore[lang]}
-          </span>
-
-          <span className="w-2 h-2 bg-red-700 rounded-full"></span>
-        </h2>
-
-        <div className="grid lg:grid-cols-4 gap-x-5">
-          {/* BIG LEFT */}
-          <div className="lg:col-span-3 bg-white p-5 rounded shadow-sm">
-            {mainNews && (
-              <Link href={`/news/${mainNews?._id || "#"}`}>
-                <h2 className="text-xl md:text-2xl font-semibold mb-3 text-ellipsis line-clamp-2 text-center md:text-left">
-                  {getTranslatedValue(mainNews?.title, lang)}
-                </h2>
-
-                <div className="w-full h-40 md:h-72">
-                  <Image
-                    src={mainNews?.featuredImage?.[0]}
-                    width={1000}
-                    height={800}
-                    className="rounded w-full h-full object-cover"
-                    alt={getTranslatedValue(mainNews?.title, lang)}
-                  />
-                </div>
-              </Link>
-            )}
+    <div className="bg-[#f3f3f3]">
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        {/* TOP TITLE BAR */}
+        <div className="grid grid-cols-2 md:grid-cols-3 mb-5 border border-[#d9d9d9] bg-white">
+          <div className="bg-[#e61e25] text-white px-4 py-2 text-lg font-semibold">
+            {t.title[lang]}
           </div>
 
-          {/* RIGHT SIDE */}
-          <div className="md:space-y-4 space-y-2">
-            {sideNews.slice(0, 3).map((news, i) => (
-              <Link
-                href={`/news/${news?._id || "#"}`}
-                key={i}
-                className="flex gap-3 bg-white p-3 rounded shadow-sm h-28"
-              >
-                <Image
-                  src={news?.featuredImage?.[0]}
-                  width={100}
-                  height={70}
-                  alt=""
-                  className="rounded-sm object-cover"
-                />
-                <p className="text-sm text-ellipsis line-clamp-2">
-                  {getTranslatedValue(news?.title, lang)}
-                </p>
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center justify-center text-gray-500 text-lg font-medium border-l border-r border-[#d9d9d9]">
+            অনলাইন
           </div>
 
-          {/* GRID BELOW */}
-          <div className="lg:col-span-4  md:grid-cols-4 gap-5 mt-4 hidden md:grid">
-            {gridNews.map((news, i) => (
-              <Link
-                href={`/news/${news?._id || "#"}`}
-                key={i}
-                className="bg-white p-3 rounded shadow-sm "
-              >
-                <Image
-                  src={news?.featuredImage?.[0]}
-                  width={300}
-                  height={180}
-                  className="rounded-sm h-44 w-full object-cover"
-                  alt=""
-                />
-                <h4 className="text-sm text-ellipsis line-clamp-1 font-medium mt-3">
-                  {getTranslatedValue(news?.title, lang)}
-                </h4>
-              </Link>
-            ))}
+          <div className="flex items-center justify-center text-[#e61e25] text-lg font-semibold">
+            {t.popular[lang]}
+          </div>
+        </div>
+
+        {/* MAIN GRID */}
+        <div className="grid lg:grid-cols-12 gap-5">
+          {/* LEFT CONTENT */}
+          <div className="lg:col-span-8">
+            {/* TOP NEWS AREA */}
+            <div className="grid md:grid-cols-3 gap-5">
+              {/* MAIN BIG NEWS */}
+              <div className="md:col-span-2 bg-white p-4">
+                {mainNews && (
+                  <Link href={`/news/${mainNews?._id || "#"}`}>
+                    <div className="grid md:grid-cols-2 gap-4 items-center">
+                      {/* TITLE */}
+                      <div>
+                        <h2 className="text-2xl md:text-[42px] leading-tight font-semibold line-clamp-5 hover:text-red-600 transition">
+                          {getTranslatedValue(mainNews?.title, lang)}
+                        </h2>
+
+                        <p className="text-gray-500 text-sm mt-4 line-clamp-3">
+                          {getTranslatedValue(mainNews?.content, lang)}
+                        </p>
+                      </div>
+
+                      {/* IMAGE */}
+                      <div className="relative w-full h-[260px] md:h-[320px] overflow-hidden">
+                        <Image
+                          src={
+                            mainNews?.featuredImage?.[0] || "/placeholder.jpg"
+                          }
+                          fill
+                          className="object-cover hover:scale-105 transition duration-300"
+                          alt={getTranslatedValue(mainNews?.title, lang)}
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                )}
+              </div>
+
+              {/* SIDE SMALL NEWS */}
+              <div className="space-y-5">
+                {sideNews.map((news, i) => (
+                  <Link
+                    href={`/news/${news?._id || "#"}`}
+                    key={i}
+                    className="block bg-white p-3"
+                  >
+                    <div className="relative w-full h-44 overflow-hidden">
+                      <Image
+                        src={news?.featuredImage?.[0] || "/placeholder.jpg"}
+                        fill
+                        className="object-cover hover:scale-105 transition duration-300"
+                        alt={getTranslatedValue(news?.title, lang)}
+                      />
+                    </div>
+
+                    <h3 className="text-lg leading-7 mt-3 font-medium line-clamp-3 hover:text-red-600 transition">
+                      {getTranslatedValue(news?.title, lang)}
+                    </h3>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* BOTTOM GRID */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-5">
+              {bottomNews.map((news, i) => (
+                <Link
+                  href={`/news/${news?._id || "#"}`}
+                  key={i}
+                  className="bg-white p-3"
+                >
+                  <div className="relative w-full h-32 md:h-40 overflow-hidden">
+                    <Image
+                      src={news?.featuredImage?.[0] || "/placeholder.jpg"}
+                      fill
+                      className="object-cover hover:scale-105 transition duration-300"
+                      alt={getTranslatedValue(news?.title, lang)}
+                    />
+                  </div>
+
+                  <h4 className="text-sm md:text-lg leading-6 mt-3 font-medium line-clamp-3 hover:text-red-600 transition">
+                    {getTranslatedValue(news?.title, lang)}
+                  </h4>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT SIDE LIST */}
+          <div className="lg:col-span-4 bg-white p-4 h-[770px] overflow-y-auto">
+            <div className="space-y-4">
+              {listNews.map((news, i) => (
+                <Link
+                  href={`/news/${news?._id || "#"}`}
+                  key={i}
+                  className="flex gap-3 border-b border-[#ececec] pb-3 group"
+                >
+                  <span className="text-[#e61e25] mt-[2px] text-sm">☞</span>
+
+                  <h3 className="text-base leading-7 line-clamp-2 group-hover:text-[#e61e25] transition">
+                    {getTranslatedValue(news?.title, lang)}
+                  </h3>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
