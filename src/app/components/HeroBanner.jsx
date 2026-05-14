@@ -45,10 +45,10 @@ export default function HeroSection() {
 
   return (
     <div className="bg-[#f6f1e8]">
-      <section className="max-w-7xl mx-auto px-3 lg:px-0 pb-5 pt-3">
+      <section className="max-w-7xl mx-auto px-4 lg:px-0 md:pb-5 pb-3 pt-3">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.8fr_1fr] md:border border-[#cfc7ba] md:bg-white">
           {/* LEFT CARD */}
-          <div className="border-b lg:border-b-0 lg:border-r border-[#cfc7ba] p-4 sm:p-5">
+          <div className="border-b lg:border-b-0 lg:border-r border-[#cfc7ba] md:p-4 pt-4">
             {leftNews && (
               <Link href={`/news/${leftNews?._id}`}>
                 <div className="group">
@@ -58,7 +58,7 @@ export default function HeroSection() {
                   </h2>
 
                   {/* META */}
-                  <div className="flex flex-wrap items-center gap-2 text-[12px] sm:text-[13px] text-gray-600 mt-3 border-b border-[#cfc7ba] pb-4">
+                  <div className="flex flex-wrap items-center gap-2 text-[12px] sm:text-[13px] text-gray-600 md:mt-3 mt-1.5 border-b border-[#cfc7ba] md:pb-4 pb-3">
                     <span>Art</span>
 
                     <span className="w-1 h-1 rounded-full bg-red-500" />
@@ -69,9 +69,11 @@ export default function HeroSection() {
                   </div>
 
                   {/* DESCRIPTION */}
-                  <p className="mt-3 text-[14px] sm:text-[15px] leading-6 sm:leading-7 text-[#444] line-clamp-4">
-                    {getTranslatedValue(leftNews?.description, lang)}
-                  </p>
+                  <div className="hidden md:block">
+                    <p className="md:mt-3 text-[15px]  leading-6  text-[#444] line-clamp-4 text-ellipsis">
+                      {getTranslatedValue(leftNews?.content, lang)}
+                    </p>
+                  </div>
 
                   {/* IMAGE */}
                   <div className="mt-3 overflow-hidden rounded">
@@ -94,12 +96,12 @@ export default function HeroSection() {
           </div>
 
           {/* CENTER MAIN NEWS */}
-          <div className="md:border-b lg:border-b-0 lg:border-r border-[#cfc7ba] md:p-4 sm:p-5">
+          <div className="md:border-b lg:border-b-0 lg:border-r border-[#cfc7ba] md:p-4 pt-5">
             {mainNews && (
               <Link href={`/news/${mainNews?._id}`}>
                 <div className="group">
                   {/* TOP BOX */}
-                  <div className="md:border border-[#cfc7ba] p-4 sm:p-5">
+                  <div className="md:border border-[#cfc7ba] md:p-4 pb-5">
                     <h1 className="text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.15] font-bold text-[#1a1a1a]">
                       {getTranslatedValue(mainNews?.title, lang)}
                     </h1>
@@ -138,7 +140,7 @@ export default function HeroSection() {
 
                   {/* DESCRIPTION */}
                   <div className="md:pt-4 pt-2">
-                    <p className="text-[14px] sm:text-[15px] line-clamp-4 leading-6 sm:leading-7 text-[#444]">
+                    <p className="text-[14px] sm:text-[15px] line-clamp-7 leading-7 text-[#444]">
                       {getTranslatedValue(mainNews?.content, lang)}
                     </p>
                   </div>

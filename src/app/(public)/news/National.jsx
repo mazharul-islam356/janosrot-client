@@ -100,7 +100,7 @@ const National = () => {
         </h2>
 
         {/* TOP SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 pb-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 md:pb-5 ">
           {/* LEFT */}
           <div>
             <Link href={`/news/${heroLeft?._id}`}>
@@ -183,7 +183,7 @@ const National = () => {
                 </div>
 
                 <div className="pt-4">
-                  <h3 className="text-[20px] sm:text-[21px] md:text-[22px] leading-7 md:leading-8 text-[#001848] line-clamp-2">
+                  <h3 className="text-[17px] md:text-[22px] leading-7 md:leading-8 text-[#001848] line-clamp-2">
                     <span className="text-red-700">
                       {index === 1
                         ? lang === "bn"
@@ -201,7 +201,7 @@ const National = () => {
                     {getTranslatedValue(news?.title, lang)}
                   </h3>
 
-                  <div className="mt-3 md:mt-4 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
+                  <div className="mt-2 md:mt-4 text-[11px]  md:text-[13px] uppercase text-gray-700 tracking-wide">
                     {new Date(news?.createdAt).toDateString()} •{" "}
                     {getTranslatedValue(news?.category, lang)}
                   </div>

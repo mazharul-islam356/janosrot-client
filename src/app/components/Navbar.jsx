@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Globe, Menu, Search, User, PenLine, X } from "lucide-react";
 import { useLanguage } from "@/context/lagnguageContext";
 import { getTranslatedValue } from "@/hooks/getTranslatedValue";
+import { House } from "lucide-react";
 
 export default function NewsNavbar() {
   const { lang, toggleLanguage } = useLanguage();
@@ -33,24 +34,35 @@ export default function NewsNavbar() {
     { name: { bn: "রাজনীতি", en: "Politics" }, slug: "politics" },
   ];
 
-  const formattedDate = time.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
+  const now = new Date();
 
-  const formattedTime = time.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const formattedDate = new Intl.DateTimeFormat(
+    lang === "bn" ? "bn-BD" : "en-US",
+    {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    },
+  ).format(now);
+
+  const formattedTime = new Intl.DateTimeFormat(
+    lang === "bn" ? "bn-BD" : "en-US",
+    {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: lang !== "bn",
+    },
+  ).format(now);
 
   return (
-    <header className="w-full border-b border-[#cfc7ba] bg-[#f6f1e8]">
+    <header className="w-full bg-[#f6f1e8]">
       <div className="max-w-7xl mx-auto">
         {/* TOP BAR */}
         <div className="hidden lg:grid grid-cols-3 items-center border-b border-[#cfc7ba] min-h-22">
           {/* LEFT */}
-          <div className="flex items-center gap-4 border-r border-[#cfc7ba] h-full px-6">
+          <div className="flex items-center gap-4 border-r border-[#cfc7ba] h-full">
             <div className="flex flex-col leading-none">
               <span className="text-[15px] font-medium text-black">
                 {formattedDate}
@@ -95,15 +107,19 @@ export default function NewsNavbar() {
         </div>
 
         {/* MOBILE HEADER */}
-        <div className="lg:hidden flex items-center justify-between px-4 py-4 border-b border-[#cfc7ba]">
+        <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-[#cfc7ba]">
           <button onClick={() => setIsOpen(true)}>
             <Menu size={26} />
           </button>
 
           <Link href="/">
-            <h1 className="text-[22px] font-black tracking-tight uppercase">
-              NEWS PORTAL
-            </h1>
+            <Image
+              src="/janosrot.png"
+              width={400}
+              height={400}
+              alt="logo"
+              className="object-cover w-28"
+            />
           </Link>
 
           <button onClick={toggleLanguage} className="text-sm font-semibold">
@@ -116,10 +132,8 @@ export default function NewsNavbar() {
           {/* LEFT */}
           <div className="flex items-center">
             {/* CATEGORY BUTTON */}
-            <button className="hidden lg:flex items-center gap-3 px-8 py-5 border-r border-[#cfc7ba] hover:bg-[#ebe3d6] transition">
-              <span className="text-[15px] font-medium">
-                {lang === "en" ? "Newspaper" : "পত্রিকা"}
-              </span>
+            <button className="hidden lg:flex items-center gap-1 px-8 py-5 border-r border-[#cfc7ba] hover:bg-[#ebe3d6] transition">
+              <House size={18} />
             </button>
 
             {/* MENU */}
@@ -167,7 +181,13 @@ export default function NewsNavbar() {
       >
         {/* HEADER */}
         <div className="flex items-center justify-between px-5 py-5 border-b">
-          <h2 className="text-2xl font-black uppercase">Menu</h2>
+          <Image
+            src="/janosrot.png"
+            width={400}
+            height={400}
+            alt="logo"
+            className="object-cover w-28"
+          />
 
           <button onClick={() => setIsOpen(false)}>
             <X size={24} />

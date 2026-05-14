@@ -94,13 +94,13 @@ export default function PoliticsPage() {
       </h2>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 md:gap-6 gap-3">
         {/* LEFT SIDE */}
-        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-2 md:gap-6 gap-3">
           {firstTwo.map((news, i) => (
             <div key={i} className="overflow-hidden">
               <Link href={`/news/${news?._id || "#"}`}>
-                <div className="relative w-full h-[220px] sm:h-[260px] md:h-56 overflow-hidden rounded">
+                <div className="relative w-full h-32  md:h-56 overflow-hidden md:rounded">
                   <Image
                     src={news?.featuredImage?.[0] || "/placeholder.jpg"}
                     fill
@@ -110,14 +110,14 @@ export default function PoliticsPage() {
                 </div>
               </Link>
 
-              <div className="py-4">
+              <div className="md:py-4 pt-2">
                 <Link href={`/news/${news?._id || "#"}`}>
-                  <h3 className="text-[20px] sm:text-[22px] md:text-xl font-bold leading-7 md:leading-snug line-clamp-2 hover:text-red-500 transition">
+                  <h3 className="text-[16px] md:text-xl font-bold leading-7 md:leading-snug line-clamp-2 hover:text-red-500 transition">
                     {getTranslatedValue(news?.title, lang)}
                   </h3>
                 </Link>
 
-                <p className="text-gray-600 text-[14px] sm:text-[15px] mt-2 line-clamp-4 sm:line-clamp-5 md:line-clamp-6 leading-6">
+                <p className="text-gray-600 text-[12px] sm:text-[15px] md:mt-2 line-clamp-3  md:line-clamp-6 leading-6">
                   {getTranslatedValue(news?.content, lang)}
                 </p>
               </div>
@@ -133,7 +133,7 @@ export default function PoliticsPage() {
               key={i}
               className="flex gap-3 md:p-3 py-3 rounded hover:bg-gray-50 transition"
             >
-              <div className="relative w-28 sm:w-32 lg:w-28 h-20 sm:h-24 lg:h-20 flex-shrink-0 overflow-hidden rounded">
+              <div className="relative w-28 sm:w-32 lg:w-28 h-20 sm:h-24 lg:h-20 flex-shrink-0 overflow-hidden md:rounded">
                 <Image
                   src={news?.featuredImage?.[0] || "/placeholder.jpg"}
                   fill
