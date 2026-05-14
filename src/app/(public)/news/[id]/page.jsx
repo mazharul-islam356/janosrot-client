@@ -68,8 +68,7 @@ export default function NewsDetailsPage() {
     return (
       <div className="flex items-center justify-center h-screen bg-white">
         <div className="flex flex-col items-center gap-4">
-          <Image src="/janosrot.png" alt="logo" width={100} height={100} />
-          <div className="w-8 h-8 border-4 border-teal-600 border-t-transparent rounded-full animate-spin"></div>
+          <Image src="/janosrot.png" alt="logo" width={120} height={120} />
         </div>
       </div>
     );
@@ -195,7 +194,7 @@ export default function NewsDetailsPage() {
                       {/* IMAGE */}
                       <div className="relative w-28 h-20 shrink-0 overflow-hidden rounded">
                         <Image
-                          src={item.featutealImage?.[0] || "/placeholder.jpg"}
+                          src={item.featuredImage?.[0] || "/placeholder.jpg"}
                           fill
                           alt={item.title?.[lang]}
                           className="object-cover group-hover:scale-105 transition duration-300"

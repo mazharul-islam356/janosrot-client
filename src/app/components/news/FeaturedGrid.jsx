@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getNewsByCategory } from "@/service/newsApi";
 import { useLanguage } from "@/context/lagnguageContext";
-import { getTranslatedValue } from "@/hooks/getTranslatedValue";
 
 export default function FeaturedGrid() {
   const { lang } = useLanguage();

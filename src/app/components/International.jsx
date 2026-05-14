@@ -2,7 +2,9 @@
 
 import { useLanguage } from "@/context/lagnguageContext";
 import { getTranslatedValue } from "@/hooks/getTranslatedValue";
+import { formatDateRelative } from "@/lib/formatDateRelative";
 import { getNewsByCategory } from "@/service/newsApi";
+import { History } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -147,8 +149,12 @@ export default function International() {
                   {getTranslatedValue(news?.title, lang)}
                 </h4>
 
-                <p className="text-[11px] sm:text-xs text-gray-500 mt-2">
-                  ১৩ মিনিট আগে
+                <p className="text-[11px] sm:text-xs text-gray-500 mt-2 flex items-center gap-1">
+                  <History size={13} />
+                  {formatDateRelative(
+                    news?.publishedAt || news?.createdAt,
+                    lang,
+                  )}
                 </p>
               </div>
             </Link>

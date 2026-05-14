@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/context/lagnguageContext";
 import { getTranslatedValue } from "@/hooks/getTranslatedValue";
+import { formatFullDate } from "@/lib/formatFullDate";
 import { getNewsByCategory } from "@/service/newsApi";
 import Image from "next/image";
 import Link from "next/link";
@@ -123,7 +124,7 @@ const National = () => {
                 </h2>
 
                 <div className="mt-3 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
-                  {new Date(heroLeft?.createdAt).toDateString()} •{" "}
+                  {formatFullDate(heroLeft?.publishedAt, lang)} •{" "}
                   {getTranslatedValue(heroLeft?.category, lang)}
                 </div>
 
@@ -202,7 +203,7 @@ const National = () => {
                   </h3>
 
                   <div className="mt-2 md:mt-4 text-[11px]  md:text-[13px] uppercase text-gray-700 tracking-wide">
-                    {new Date(news?.createdAt).toDateString()} •{" "}
+                    {formatFullDate(news?.publishedAt, lang)} •{" "}
                     {getTranslatedValue(news?.category, lang)}
                   </div>
                 </div>

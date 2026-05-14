@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { getNewsByCategory } from "@/service/newsApi";
 import { useLanguage } from "@/context/lagnguageContext";
 import Link from "next/link";
+import { History } from "lucide-react";
+import { formatDateRelative } from "@/lib/formatDateRelative";
 
 export default function ForYouSection() {
   const [entertainment, setEntertainment] = useState([]);
@@ -98,8 +100,12 @@ export default function ForYouSection() {
                 </p>
 
                 {/* Time */}
-                <span className="text-[11px] sm:text-xs text-gray-400">
-                  just now
+                <span className="text-[11px] flex items-center gap-1 sm:text-xs text-gray-400">
+                  <History size={13} />
+                  {formatDateRelative(
+                    item?.publishedAt || item?.createdAt,
+                    lang,
+                  )}
                 </span>
               </div>
             </div>

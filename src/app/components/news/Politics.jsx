@@ -6,6 +6,8 @@ import { getNewsByCategory } from "@/service/newsApi";
 import { getTranslatedValue } from "@/hooks/getTranslatedValue";
 import { useLanguage } from "@/context/lagnguageContext";
 import Link from "next/link";
+import { History } from "lucide-react";
+import { formatDateRelative } from "@/lib/formatDateRelative";
 
 export default function Politics() {
   const [world, setWorld] = useState([]);
@@ -107,8 +109,12 @@ export default function Politics() {
                     </h3>
                   </Link>
 
-                  <p className="text-[11px] sm:text-xs text-gray-500 mt-2">
-                    {news?.createdAt ? "কিছু সময় আগে" : ""}
+                  <p className="text-[11px] sm:text-xs flex items-center gap-1 text-gray-500 mt-2">
+                    <History size={13} />
+                    {formatDateRelative(
+                      news?.publishedAt || news?.createdAt,
+                      lang,
+                    )}
                   </p>
                 </div>
 
@@ -149,7 +155,13 @@ export default function Politics() {
                   {getTranslatedValue(featured?.content, lang)}
                 </p>
 
-                <p className="text-xs text-gray-500 mt-2">২১ মিনিট আগে</p>
+                <p className="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                  <History size={13} />
+                  {formatDateRelative(
+                    featured?.publishedAt || featured?.createdAt,
+                    lang,
+                  )}
+                </p>
               </Link>
             )}
           </div>
@@ -168,8 +180,12 @@ export default function Politics() {
                     </h3>
                   </Link>
 
-                  <p className="text-[11px] sm:text-xs text-gray-500 mt-2">
-                    কিছু সময় আগে
+                  <p className="text-[11px] flex items-center gap-1 sm:text-xs text-gray-500 mt-2">
+                    <History size={13} />
+                    {formatDateRelative(
+                      news?.publishedAt || news?.createdAt,
+                      lang,
+                    )}
                   </p>
                 </div>
 

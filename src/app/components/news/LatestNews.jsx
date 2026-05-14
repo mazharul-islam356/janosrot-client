@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import NewsSkeleton from "./LatestNewsSkeleton";
+import { History } from "lucide-react";
+import { formatDateRelative } from "@/lib/formatDateRelative";
 
 export default function LatestNews() {
   const [latest, setLatest] = useState([]);
@@ -101,8 +103,12 @@ export default function LatestNews() {
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] sm:text-xs text-gray-500"></span>
                   <div className="hidden md:block">
-                    <span className="text-[11px] hover:text-gray-500 transition">
-                      {item?.time || "Just now"}
+                    <span className="text-[11px] hover:text-gray-500 transition flex items-center gap-1">
+                      <History size={15} />
+                      {formatDateRelative(
+                        item?.publishedAt || item?.createdAt,
+                        lang,
+                      )}
                     </span>
                   </div>
                 </div>

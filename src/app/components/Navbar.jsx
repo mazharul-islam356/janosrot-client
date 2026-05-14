@@ -151,8 +151,7 @@ export default function NewsNavbar() {
         </div>
 
         {/* CATEGORY NAV */}
-
-        <nav className="md:flex sticky top-0 items-center justify-between border-b border-[#cfc7ba] bg-[#f6f1e8] z-30">
+        <nav className="md:flex hidden sticky top-0 z-50 items-center justify-between border-b border-[#cfc7ba] bg-[#f6f1e8]">
           {/* LEFT */}
           <div className="flex items-center">
             {/* CATEGORY BUTTON */}

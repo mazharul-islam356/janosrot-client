@@ -118,7 +118,7 @@ export default function CreateNews() {
 
       // console.log(data);
       // return;
-      await axios.post(`http://localhost:5000/api/news`, data, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/news`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
