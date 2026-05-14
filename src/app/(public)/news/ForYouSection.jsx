@@ -54,9 +54,13 @@ export default function ForYouSection() {
     <section className="w-full py-8 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         {/* Header */}
-        <div className="flex items-center gap-2 mb-5">
-          <h2 className="text-xl sm:text-2xl border-b-2 border-red-700 font-semibold pb-1">
+        <div>
+          <h2 className="text-lg sm:text-xl md:text-3xl text-center font-semibold mb-6 border-y border-[#cfc7ba] bg-white text-gray-600 py-3 flex items-center justify-center gap-3">
+            <span className="w-2 h-2 rounded-full animate-pulse bg-[#07626c]"></span>
+
             {t.title[lang]}
+
+            <span className="w-2 h-2 rounded-full animate-pulse bg-[#07626c]"></span>
           </h2>
         </div>
 
@@ -65,7 +69,7 @@ export default function ForYouSection() {
           {newsData.map((item, index) => (
             <div
               key={item?._id || index}
-              className="bg-white rounded-sm sm:rounded-md overflow-hidden shadow-sm hover:shadow-md transition"
+              className="bg-white overflow-hidden shadow-sm hover:shadow-md transition"
             >
               {/* Image */}
               <Link href={`/news/${item?._id || "#"}`}>

@@ -88,44 +88,46 @@ const National = () => {
   const bottomNews = business.slice(2, 6);
 
   return (
-    <section className="py-8 lg:pb-12">
-      <div className="max-w-7xl mx-auto ">
-        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y border-[#cfc7ba] bg-white text-gray-600 py-3 flex items-center justify-center gap-3">
-          <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
+    <section className="py-6 md:py-8 lg:pb-12 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-0">
+        {/* TITLE */}
+        <h2 className="text-lg sm:text-xl md:text-3xl text-center font-semibold mb-6 border-y border-[#cfc7ba] bg-white text-gray-600 py-3 flex items-center justify-center gap-3">
+          <span className="w-2 h-2 animate-pulse rounded-full bg-[#07626c]"></span>
 
           {title.title[lang]}
 
-          <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
+          <span className="w-2 h-2 animate-pulse rounded-full bg-[#07626c]"></span>
         </h2>
+
         {/* TOP SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 pb-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 pb-5">
           {/* LEFT */}
           <div>
             <Link href={`/news/${heroLeft?._id}`}>
-              <div className="overflow-hidden">
+              <div className="overflow-hidden rounded">
                 <Image
                   src={heroLeft?.featuredImage?.[0] || "/placeholder.jpg"}
                   alt={getTranslatedValue(heroLeft?.title, lang)}
                   width={900}
                   height={500}
-                  className="w-full h-[250px] md:h-[340px] object-cover hover:scale-105 duration-500"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[340px] object-cover hover:scale-105 duration-500"
                 />
               </div>
 
-              <div className="mt-5">
-                <h2 className="text-2xl md:text-3xl leading-[34px] md:leading-[48px] text-ellipsis line-clamp-2  text-[#001848]">
+              <div className="mt-4 md:mt-5">
+                <h2 className="text-[22px] sm:text-[26px] md:text-3xl leading-[32px] md:leading-[48px] text-ellipsis line-clamp-2 text-[#001848]">
                   <span className="text-red-700">
                     {lang === "bn" ? "ইন্টারেক্টিভ" : "Interactive"}
                   </span>{" "}
                   / {getTranslatedValue(heroLeft?.title, lang)}
                 </h2>
 
-                <div className="mt-3 text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
+                <div className="mt-3 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
                   {new Date(heroLeft?.createdAt).toDateString()} •{" "}
                   {getTranslatedValue(heroLeft?.category, lang)}
                 </div>
 
-                <p className="mt-4 text-[17px] md:text-[18px] leading-8 text-gray-700 ">
+                <p className="mt-3 md:mt-4 text-[15px] sm:text-[16px] md:text-[18px] leading-7 md:leading-8 text-gray-700 line-clamp-4">
                   {getTranslatedValue(heroLeft?.content, lang)?.slice(0, 160)}
                   ...
                 </p>
@@ -136,27 +138,27 @@ const National = () => {
           {/* RIGHT */}
           <div>
             <Link href={`/news/${heroRight?._id}`}>
-              <div className="overflow-hidden">
+              <div className="overflow-hidden rounded">
                 <Image
                   src={heroRight?.featuredImage?.[0] || "/placeholder.jpg"}
                   alt={getTranslatedValue(heroRight?.title, lang)}
                   width={900}
                   height={500}
-                  className="w-full h-[250px] md:h-[340px] object-cover hover:scale-105 duration-500"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[340px] object-cover hover:scale-105 duration-500"
                 />
               </div>
 
-              <div className="mt-5">
-                <h2 className="text-2xl text-ellipsis line-clamp-2 md:text-3xl leading-[34px] md:leading-[48px]  text-[#001848]">
+              <div className="mt-4 md:mt-5">
+                <h2 className="text-[22px] sm:text-[26px] md:text-3xl leading-[32px] md:leading-[48px] text-[#001848] line-clamp-2">
                   {getTranslatedValue(heroRight?.title, lang)}
                 </h2>
 
-                <div className="mt-3 text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
+                <div className="mt-3 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
                   {new Date(heroRight?.createdAt).toDateString()} •{" "}
                   {getTranslatedValue(heroRight?.category, lang)}
                 </div>
 
-                <p className="mt-4 text-[17px] md:text-[18px] leading-8 text-gray-700 ">
+                <p className="mt-3 md:mt-4 text-[15px] sm:text-[16px] md:text-[18px] leading-7 md:leading-8 text-gray-700 line-clamp-4">
                   {getTranslatedValue(heroRight?.content, lang)?.slice(0, 150)}
                   ...
                 </p>
@@ -166,22 +168,22 @@ const National = () => {
         </div>
 
         {/* BOTTOM NEWS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pt-8 md:pt-10">
           {bottomNews.map((news, index) => (
             <Link key={news?._id} href={`/news/${news?._id}`}>
               <article className="group">
-                <div className="overflow-hidden">
+                <div className="overflow-hidden rounded">
                   <Image
                     src={news?.featuredImage?.[0] || "/placeholder.jpg"}
                     alt={getTranslatedValue(news?.title, lang)}
                     width={500}
                     height={300}
-                    className="w-full h-[180px] object-cover group-hover:scale-105 duration-500"
+                    className="w-full h-44 sm:h-50 lg:h-45 object-cover group-hover:scale-105 duration-500"
                   />
                 </div>
 
                 <div className="pt-4">
-                  <h3 className="text-[22px] leading-8  text-[#001848] text-ellipsis line-clamp-2">
+                  <h3 className="text-[20px] sm:text-[21px] md:text-[22px] leading-7 md:leading-8 text-[#001848] line-clamp-2">
                     <span className="text-red-700">
                       {index === 1
                         ? lang === "bn"
@@ -199,7 +201,7 @@ const National = () => {
                     {getTranslatedValue(news?.title, lang)}
                   </h3>
 
-                  <div className="mt-4 text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
+                  <div className="mt-3 md:mt-4 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
                     {new Date(news?.createdAt).toDateString()} •{" "}
                     {getTranslatedValue(news?.category, lang)}
                   </div>

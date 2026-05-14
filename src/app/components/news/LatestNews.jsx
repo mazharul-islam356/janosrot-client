@@ -41,11 +41,11 @@ export default function LatestNews() {
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 pt-2">
       {/* Title */}
       <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y border-[#cfc7ba] bg-white text-gray-600 py-3 flex items-center justify-center gap-3">
-        <span className="w-2 h-2 rounded-full animate-pulse bg-gray-500"></span>
+        <span className="w-2 h-2 rounded-full animate-pulse bg-[#07626c]"></span>
 
         {title.title[lang]}
 
-        <span className="w-2 h-2 rounded-full animate-pulse bg-gray-500"></span>
+        <span className="w-2 h-2 rounded-full animate-pulse bg-[#07626c]"></span>
       </h2>
 
       {/* Grid */}

@@ -60,8 +60,8 @@ export default function ThreeCategorySection() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 md:py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
         {sections.map((section, idx) => {
           const mainNews = section?.data?.[0];
           const sideNews = section?.data?.slice(1, 4);
@@ -70,11 +70,11 @@ export default function ThreeCategorySection() {
             <div key={idx}>
               {/* TOP BAR */}
               <div className="flex items-center justify-between bg-[#efefef] border border-[#dcdcdc] mb-2">
-                <h2 className="text-[#23727b] text-xl font-medium px-4 py-2">
+                <h2 className="text-[#23727b] text-base sm:text-lg md:text-xl font-medium px-3 md:px-4 py-2">
                   {section.title[lang]}
                 </h2>
 
-                <button className="bg-[#23727b] text-white px-5 py-2 text-sm">
+                <button className="bg-[#23727b] text-white px-3 sm:px-4 md:px-5 py-2 text-xs sm:text-sm">
                   আরো
                 </button>
               </div>
@@ -83,9 +83,9 @@ export default function ThreeCategorySection() {
               {mainNews && (
                 <Link
                   href={`/news/${mainNews?._id || "#"}`}
-                  className="block bg-[#f3f3f3] border border-[#e3e3e3] p-3"
+                  className="block bg-[#f3f3f3] border border-[#e3e3e3] p-2 sm:p-3"
                 >
-                  <div className="relative w-full h-[280px] overflow-hidden">
+                  <div className="relative w-full h-[220px] sm:h-[260px] md:h-[280px] overflow-hidden">
                     <Image
                       src={mainNews?.featuredImage?.[0] || "/placeholder.jpg"}
                       fill
@@ -94,7 +94,7 @@ export default function ThreeCategorySection() {
                     />
                   </div>
 
-                  <h3 className="text-2xl leading-10 mt-4 line-clamp-2 hover:text-[#23727b] transition">
+                  <h3 className="text-lg sm:text-xl md:text-2xl leading-7 sm:leading-8 md:leading-10 mt-3 md:mt-4 line-clamp-2 hover:text-[#23727b] transition">
                     {getTranslatedValue(mainNews?.title, lang)}
                   </h3>
                 </Link>
@@ -106,11 +106,11 @@ export default function ThreeCategorySection() {
                   <Link
                     href={`/news/${news?._id || "#"}`}
                     key={i}
-                    className="flex items-start gap-3 bg-[#f3f3f3] border border-[#e3e3e3] px-3 py-4 hover:bg-[#ececec] transition"
+                    className="flex items-start gap-2 sm:gap-3 bg-[#f3f3f3] border border-[#e3e3e3] px-2 sm:px-3 py-3 sm:py-4 hover:bg-[#ececec] transition"
                   >
-                    <span className="w-0 h-0 border-t-[7px] border-t-transparent border-b-[7px] border-b-transparent border-l-[9px] border-l-[#ff2d2d] mt-[6px]"></span>
+                    <span className="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-[#ff2d2d] mt-[5px] shrink-0"></span>
 
-                    <h4 className="text-lg leading-8 line-clamp-1 hover:text-[#23727b] transition">
+                    <h4 className="text-sm sm:text-base md:text-lg leading-6 sm:leading-7 md:leading-8 line-clamp-2 sm:line-clamp-1 hover:text-[#23727b] transition">
                       {getTranslatedValue(news?.title, lang)}
                     </h4>
                   </Link>

@@ -83,14 +83,14 @@ export default function PoliticsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto  py-6 sm:py-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-5 lg:px-0 py-6 sm:py-10 overflow-hidden">
       {/* Title */}
-      <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y bg-white border-[#cfc7ba]  text-gray-600 py-3 flex items-center justify-center gap-3">
-        <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
+      <h2 className="text-lg sm:text-xl md:text-3xl text-center font-semibold mb-6 border-y bg-white border-[#cfc7ba] text-gray-600 py-3 flex items-center justify-center gap-3">
+        <span className="w-2 h-2 animate-pulse rounded-full bg-[#07626c]"></span>
 
         {t.title[lang]}
 
-        <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
+        <span className="w-2 h-2 animate-pulse rounded-full bg-[#07626c]"></span>
       </h2>
 
       {/* Main Grid */}
@@ -100,7 +100,7 @@ export default function PoliticsPage() {
           {firstTwo.map((news, i) => (
             <div key={i} className="overflow-hidden">
               <Link href={`/news/${news?._id || "#"}`}>
-                <div className="relative w-full h-56 overflow-hidden">
+                <div className="relative w-full h-[220px] sm:h-[260px] md:h-56 overflow-hidden rounded">
                   <Image
                     src={news?.featuredImage?.[0] || "/placeholder.jpg"}
                     fill
@@ -112,12 +112,12 @@ export default function PoliticsPage() {
 
               <div className="py-4">
                 <Link href={`/news/${news?._id || "#"}`}>
-                  <h3 className="text-lg md:text-xl font-bold leading-snug line-clamp-2 hover:text-red-500 transition">
+                  <h3 className="text-[20px] sm:text-[22px] md:text-xl font-bold leading-7 md:leading-snug line-clamp-2 hover:text-red-500 transition">
                     {getTranslatedValue(news?.title, lang)}
                   </h3>
                 </Link>
 
-                <p className="text-gray-600 text-sm mt-1 line-clamp-6 leading-6">
+                <p className="text-gray-600 text-[14px] sm:text-[15px] mt-2 line-clamp-4 sm:line-clamp-5 md:line-clamp-6 leading-6">
                   {getTranslatedValue(news?.content, lang)}
                 </p>
               </div>
@@ -131,9 +131,9 @@ export default function PoliticsPage() {
             <Link
               href={`/news/${news?._id || "#"}`}
               key={i}
-              className=" flex gap-3 p-3 hover:bg-gray-50 transition"
+              className="flex gap-3 md:p-3 py-3 rounded hover:bg-gray-50 transition"
             >
-              <div className="relative w-28 h-20 flex-shrink-0 overflow-hidden">
+              <div className="relative w-28 sm:w-32 lg:w-28 h-20 sm:h-24 lg:h-20 flex-shrink-0 overflow-hidden rounded">
                 <Image
                   src={news?.featuredImage?.[0] || "/placeholder.jpg"}
                   fill
@@ -142,12 +142,14 @@ export default function PoliticsPage() {
                 />
               </div>
 
-              <div className="flex flex-col justify-between">
-                <h4 className="text-sm font-semibold leading-5 line-clamp-3 hover:text-red-500 transition">
+              <div className="flex flex-col justify-between flex-1">
+                <h4 className="text-[14px] sm:text-[15px] font-semibold leading-5 sm:leading-6 line-clamp-3 hover:text-red-500 transition">
                   {getTranslatedValue(news?.title, lang)}
                 </h4>
 
-                <p className="text-xs text-gray-500 mt-2">১৩ মিনিট আগে</p>
+                <p className="text-[11px] sm:text-xs text-gray-500 mt-2">
+                  ১৩ মিনিট আগে
+                </p>
               </div>
             </Link>
           ))}

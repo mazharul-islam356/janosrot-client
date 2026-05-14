@@ -86,11 +86,11 @@ export default function World() {
       <div className="max-w-7xl mx-auto px-4">
         {/* TITLE */}
         <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y bg-white border-[#cfc7ba]  text-gray-600 py-3 flex items-center justify-center gap-3">
-          <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
+          <span className="w-2 h-2 animate-pulse rounded-full bg-[#07626c]"></span>
 
           {t.title[lang]}
 
-          <span className="w-2 h-2 animate-pulse rounded-full bg-gray-500"></span>
+          <span className="w-2 h-2 animate-pulse rounded-full bg-[#07626c]"></span>
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* LEFT */}
