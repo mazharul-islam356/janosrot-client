@@ -7,7 +7,7 @@ import { getTranslatedValue } from "@/hooks/getTranslatedValue";
 import { useLanguage } from "@/context/lagnguageContext";
 import Link from "next/link";
 
-export default function World() {
+export default function Politics() {
   const [world, setWorld] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ export default function World() {
         setLoading(true);
         setError(null);
 
-        const data = await getNewsByCategory("world", "en");
+        const data = await getNewsByCategory("politics", "en");
         setWorld(data);
       } catch (err) {
         console.error(err);
@@ -76,8 +76,8 @@ export default function World() {
 
   const t = {
     title: {
-      en: "World",
-      bn: "বিশ্ব",
+      en: "Politics",
+      bn: "রাজনীতি",
     },
   };
 

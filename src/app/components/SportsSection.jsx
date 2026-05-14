@@ -19,7 +19,7 @@ export default function SportsSection() {
       try {
         setLoading(true);
 
-        const data = await getNewsByCategory("world", "en");
+        const data = await getNewsByCategory("sports", "en");
         setSports(data?.data || []);
       } catch (error) {
         console.error(error);
@@ -98,7 +98,7 @@ export default function SportsSection() {
                     {getTranslatedValue(featuredNews?.title, lang)}
                   </h3>
 
-                  <p className="text-gray-600 text-[14px] sm:text-[15px] md:text-base leading-6 sm:leading-7 mt-3 sm:mt-4 line-clamp-3">
+                  <p className="text-gray-600 text-[14px] sm:text-[15px] md:text-base leading-6 sm:leading-7 mt-3 sm:mt-4 md:line-clamp-5 line-clamp-3">
                     {getTranslatedValue(featuredNews?.content, lang)}
                   </p>
                 </div>

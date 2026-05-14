@@ -23,7 +23,7 @@ export default function FeaturedGrid() {
           await Promise.all([
             getNewsByCategory("entertainment", "en"),
             getNewsByCategory("business", "en"),
-            getNewsByCategory("corruption", "en"),
+            getNewsByCategory("education", "en"),
             getNewsByCategory("world", "en"),
           ]);
 

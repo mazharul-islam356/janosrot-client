@@ -11,13 +11,13 @@ const National = () => {
   const [business, setBusiness] = useState([]);
   const [loading, setLoading] = useState(true);
   const { lang } = useLanguage();
-  console.log("bepsa", business);
+
   useEffect(() => {
     const loadData = async () => {
       try {
         setLoading(true);
 
-        const data = await getNewsByCategory("business", "en");
+        const data = await getNewsByCategory("national", "en");
 
         setBusiness(data?.data || []);
       } catch (error) {
@@ -184,7 +184,7 @@ const National = () => {
 
                 <div className="pt-4">
                   <h3 className="text-[17px] md:text-[22px] leading-7 md:leading-8 text-[#001848] line-clamp-2">
-                    <span className="text-red-700">
+                    <span className="text-teal-700">
                       {index === 1
                         ? lang === "bn"
                           ? "ভিডিও"

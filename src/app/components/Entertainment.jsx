@@ -68,8 +68,8 @@ export default function Entertainment() {
       bn: "বিনোদন",
     },
     popular: {
-      en: "Most Read",
-      bn: "সর্বাধিক পঠিত",
+      en: "See more",
+      bn: "আরও দেখুন",
     },
   };
 
@@ -109,9 +109,9 @@ export default function Entertainment() {
                   <Link href={`/news/${mainNews?._id || "#"}`}>
                     <div className="flex flex-col">
                       {/* TOP CONTENT */}
-                      <div className="flex flex-col md:flex-row-reverse gap-4">
+                      <div className="flex flex-col md:flex-col gap-4">
                         {/* IMAGE */}
-                        <div className="relative w-full md:w-2/5 h-[220px] sm:h-[260px] md:h-[240px] overflow-hidden shrink-0 rounded">
+                        <div className="relative w-full md:w-full h-[220px] sm:h-[260px] md:h-[240px] overflow-hidden shrink-0 rounded">
                           <Image
                             src={
                               mainNews?.featuredImage?.[0] || "/placeholder.jpg"
@@ -124,15 +124,15 @@ export default function Entertainment() {
 
                         {/* TITLE */}
                         <div className="flex-1">
-                          <h2 className="text-xl sm:text-2xl md:text-[36px] leading-snug md:leading-tight font-semibold line-clamp-4 hover:text-red-600 transition">
+                          <h2 className="text-xl  md:text-[30px] leading-snug md:leading-tight font-semibold line-clamp-4 hover:text-red-600 transition">
                             {getTranslatedValue(mainNews?.title, lang)}
                           </h2>
                         </div>
                       </div>
 
                       {/* CONTENT */}
-                      <div className="mt-4">
-                        <p className="text-gray-600 text-sm sm:text-base leading-7 line-clamp-5 md:line-clamp-8">
+                      <div className="mt-2">
+                        <p className="text-gray-600 text-sm sm:text-base leading-7 line-clamp-3 md:line-clamp-4">
                           {getTranslatedValue(mainNews?.content, lang)}
                         </p>
                       </div>
@@ -159,7 +159,7 @@ export default function Entertainment() {
                       />
                     </div>
 
-                    <h3 className="text-sm sm:text-base md:text-lg leading-5 md:leading-7 mt-2 md:mt-3 font-medium line-clamp-3 hover:text-red-600 transition">
+                    <h3 className="text-sm md:text-base leading-5  mt-2 md:mt-3 font-semibold line-clamp-3 hover:text-teal-600 transition">
                       {getTranslatedValue(news?.title, lang)}
                     </h3>
                   </Link>

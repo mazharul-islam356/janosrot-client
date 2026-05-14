@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import BreakingTicker from "../components/news/BreakingTicker";
 import HeroSection from "../components/HeroBanner";
-import PoliticsPage from "../components/Politics";
 import AdBanner from "../components/AdBanner";
 import FeaturedGrid from "../components/news/FeaturedGrid";
 import ForYouSection from "./news/ForYouSection";
 import AdBanner2 from "../components/AdBanner2";
 import LatestNews from "../components/news/LatestNews";
-import World from "../components/news/World";
 import Entertainment from "../components/Entertainment";
 import National from "./news/National";
 import ThreeCategorySection from "../components/ThreeCategory";
 import SportsSection from "../components/SportsSection";
+import International from "../components/International";
+import Politics from "../components/news/Politics";
 export const categories = [
   { name: "Politics", slug: "politics" },
   { name: "Technology", slug: "technology" },
@@ -111,9 +111,9 @@ export default function HomePage() {
       {/* <AdBanner imageUrl="/1941257753831324090.jpg" /> */}
       <LatestNews />
       <National />
-      <PoliticsPage />
+      <International />
       <AdBanner2 imageUrl="/larevad.jpg" />
-      <World />
+      <Politics />
       <Entertainment />
       {/* <National /> */}
       <SportsSection />

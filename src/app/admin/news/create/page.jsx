@@ -118,7 +118,7 @@ export default function CreateNews() {
 
       // console.log(data);
       // return;
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL_V2}/news`, data, {
+      await axios.post(`http://localhost:5000/api/news`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -130,7 +130,7 @@ export default function CreateNews() {
       setFiles([]);
       setPreviews([]);
     } catch (err) {
-      toast.error(err.message || "Error creating news");
+      toast.error(err?.response?.data?.message || "Error creating news");
     } finally {
       setLoading(false);
     }
@@ -536,8 +536,9 @@ export default function CreateNews() {
 
               setForm({
                 ...form,
-                category_en: selected.en,
-                category_bn: selected.bn,
+                category: e.target.value,
+                category_en: selected?.en || "",
+                category_bn: selected?.bn || "",
               });
             }}
             className="w-full border px-3 py-2 text-sm rounded-sm"

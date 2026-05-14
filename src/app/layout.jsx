@@ -13,7 +13,7 @@ const tiroBangla = Tiro_Bangla({
 });
 
 export const metadata = {
-  title: "জনস্রোত",
+  title: "জনস্রোত | Jonosrot",
   description: "A Bangladeshi news portal",
   icons: {
     icon: "/janosrot.png",

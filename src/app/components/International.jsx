@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function PoliticsPage() {
+export default function International() {
   const [politics, setPolitics] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ export default function PoliticsPage() {
         setLoading(true);
         setError(null);
 
-        const data = await getNewsByCategory("politics", "en");
+        const data = await getNewsByCategory("international", "en");
         setPolitics(data);
       } catch (err) {
         console.error(err);
@@ -77,8 +77,8 @@ export default function PoliticsPage() {
 
   const t = {
     title: {
-      en: "Politics",
-      bn: "রাজনীতি",
+      en: "International",
+      bn: "আন্তর্জাতিক",
     },
   };
 
