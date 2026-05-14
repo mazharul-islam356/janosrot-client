@@ -121,7 +121,12 @@ export default function HeroSection() {
 
   const mainNews = featured?.[0];
   const leftNews = featured?.[1];
-
+  const title = {
+    title: {
+      en: "Now",
+      bn: "টি এখন",
+    },
+  };
   return (
     <div className="bg-[#f6f1e8]">
       <section className="max-w-7xl mx-auto px-4 lg:px-0 md:pb-5 pb-3 pt-3">
@@ -142,7 +147,7 @@ export default function HeroSection() {
                       {getTranslatedValue(leftNews?.category, lang)}
                     </span>
 
-                    <span className="w-1 h-1 rounded-full bg-red-500" />
+                    <span className="w-1 h-1 rounded-full bg-teal-500" />
 
                     <span>
                       {formatDate(
@@ -200,11 +205,11 @@ export default function HeroSection() {
                         {getTranslatedValue(mainNews?.category, lang)}
                       </span>
 
-                      <span className="w-1 h-1 rounded-full bg-red-500" />
+                      <span className="w-1 h-1 rounded-full bg-teal-600" />
 
                       <span>{getTranslatedValue(mainNews?.writer, lang)}</span>
 
-                      <span className="w-1 h-1 rounded-full bg-red-500" />
+                      <span className="w-1 h-1 rounded-full bg-teal-600" />
 
                       <span>
                         {formatDate(
@@ -250,8 +255,8 @@ export default function HeroSection() {
                 {lang === "en" ? "Popular Article" : "জনপ্রিয় সংবাদ"}
               </h3>
 
-              <span className="text-[11px] sm:text-[12px] border border-[#ff7a59] text-[#ff7a59] px-2 py-1 rounded-full whitespace-nowrap">
-                20 Now
+              <span className="text-[11px] sm:text-[12px] border border-[#0796a3] text-[#0796a3] px-2 py-1 rounded-full whitespace-nowrap">
+                {breaking.length} {title.title[lang]}
               </span>
             </div>
 
