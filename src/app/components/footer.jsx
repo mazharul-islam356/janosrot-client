@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/context/lagnguageContext";
+import { Linkedin } from "lucide-react";
 import {
   Facebook,
   Twitter,
@@ -91,7 +92,7 @@ export default function Footer() {
             <div className="flex gap-3 mt-4">
               <Social icon={<Facebook size={18} />} />
               <Social icon={<Twitter size={18} />} />
-              <Social icon={<Youtube size={18} />} />
+              <Social icon={<Linkedin size={18} />} />
               <Social icon={<Instagram size={18} />} />
             </div>
           </div>
@@ -137,10 +138,10 @@ export default function Footer() {
                 <MapPin size={16} /> {t.location[lang]}
               </p>
               <p className="flex items-center gap-2">
-                <Phone size={16} /> +880 1234-567890
+                <Phone size={16} /> +880 1865478952
               </p>
               <p className="flex items-center gap-2">
-                <Mail size={16} /> info@newstoday.com
+                <Mail size={16} /> info@jonosrot.com
               </p>
             </div>
 

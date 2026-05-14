@@ -22,9 +22,9 @@ export default function FeaturedGrid() {
         const [entertainmentData, businessData, corruptionData, worldData] =
           await Promise.all([
             getNewsByCategory("entertainment", "en"),
-            getNewsByCategory("business", "en"),
+            getNewsByCategory("whole_country", "en"),
             getNewsByCategory("education", "en"),
-            getNewsByCategory("world", "en"),
+            getNewsByCategory("opinion", "en"),
           ]);
 
         setEntertainment(entertainmentData?.data || []);
@@ -40,7 +40,7 @@ export default function FeaturedGrid() {
   }, []);
 
   // prottek category theke first news
-  const data = [entertainment[4], business[0], corruption[1], world[4]].filter(
+  const data = [entertainment[4], business[0], corruption[1], world[0]].filter(
     Boolean,
   );
 

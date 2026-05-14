@@ -19,9 +19,9 @@ export default function ForYouSection() {
       try {
         const [e, b, c, w] = await Promise.all([
           getNewsByCategory("entertainment", "en"),
-          getNewsByCategory("business", "en"),
+          getNewsByCategory("whole_country", "en"),
           getNewsByCategory("politics", "en"),
-          getNewsByCategory("world", "en"),
+          getNewsByCategory("jobs", "en"),
         ]);
 
         setEntertainment(e?.data || []);
@@ -38,15 +38,15 @@ export default function ForYouSection() {
 
   const newsData = [
     entertainment[3],
-    business[3],
+    business[0],
     corruption[3],
-    world[3],
+    world[0],
   ].filter(Boolean);
 
   const t = {
     title: {
-      en: "For you",
-      bn: "আপনার জন্য",
+      en: "Jonosrot special",
+      bn: "জনস্রোত স্পেশাল",
     },
   };
 

@@ -108,11 +108,14 @@ export default function HomePage() {
       {/* <BreakingTicker news={news.slice(0, 5)} /> */}
 
       <HeroSection featured={featured} />
-      {/* <AdBanner imageUrl="/1941257753831324090.jpg" /> */}
+      <AdBanner imageUrl="/ad-2.gif" />
       <LatestNews />
       <National />
       <International />
-      <AdBanner2 imageUrl="/larevad.jpg" />
+      <AdBanner2
+        link="https://www.youtube.com/watch?v=q3spaWr_NgE"
+        imageUrl="/meril-onosthan.jpg"
+      />
       <Politics />
       <Entertainment />
       {/* <National /> */}

@@ -7,38 +7,117 @@ import Image from "next/image";
 import { useLanguage } from "@/context/lagnguageContext";
 import { getTranslatedValue } from "@/hooks/getTranslatedValue";
 import { MoveUpRight } from "lucide-react";
+import { formatNumber } from "@/context/formatNumber";
+
+// Skeleton Components
+const HeroSkeleton = () => {
+  return (
+    <div className="bg-[#f6f1e8]">
+      <section className="max-w-7xl mx-auto px-4 lg:px-0 md:pb-5 pb-3 pt-3">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.8fr_1fr] md:border border-[#cfc7ba] md:bg-white">
+          {/* LEFT CARD SKELETON */}
+          <div className="border-b lg:border-b-0 lg:border-r border-[#cfc7ba] md:p-4 pt-4">
+            <div className="animate-pulse">
+              <div className="h-8 bg-gray-200 rounded w-full mb-3"></div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="h-4 bg-gray-200 rounded w-12"></div>
+                <div className="w-1 h-1 rounded-full bg-gray-200"></div>
+                <div className="h-4 bg-gray-200 rounded w-24"></div>
+              </div>
+              <div className="hidden md:block mb-3">
+                <div className="h-16 bg-gray-200 rounded w-full"></div>
+              </div>
+              <div className="h-[200px] sm:h-[220px] bg-gray-200 rounded w-full mb-4"></div>
+              <div className="h-20 bg-gray-200 rounded w-full"></div>
+            </div>
+          </div>
+
+          {/* CENTER MAIN NEWS SKELETON */}
+          <div className="md:border-b lg:border-b-0 lg:border-r border-[#cfc7ba] md:p-4 pt-5">
+            <div className="animate-pulse">
+              <div className="md:border border-[#cfc7ba] md:p-4 pb-5">
+                <div className="h-10 bg-gray-200 rounded w-full mb-4"></div>
+                <div className="h-10 bg-gray-200 rounded w-3/4 mb-4"></div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-[1px] bg-gray-200"></div>
+                  <div className="h-4 bg-gray-200 rounded w-20"></div>
+                  <div className="w-1 h-1 rounded-full bg-gray-200"></div>
+                  <div className="h-4 bg-gray-200 rounded w-24"></div>
+                </div>
+              </div>
+              <div className="h-[220px] sm:h-[300px] lg:h-64 bg-gray-200 rounded w-full mb-4"></div>
+              <div className="h-24 bg-gray-200 rounded w-full"></div>
+            </div>
+          </div>
+
+          {/* RIGHT TRENDING SKELETON */}
+          <div className="md:p-4 pt-6">
+            <div className="animate-pulse">
+              <div className="flex items-center justify-between border-b border-[#cfc7ba] pb-4">
+                <div className="h-6 bg-gray-200 rounded w-32"></div>
+                <div className="h-5 bg-gray-200 rounded w-16"></div>
+              </div>
+              <div className="space-y-4 mt-4">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="flex gap-3">
+                    <div className="h-6 bg-gray-200 rounded w-10"></div>
+                    <div className="flex-1">
+                      <div className="h-5 bg-gray-200 rounded w-full mb-2"></div>
+                      <div className="flex gap-2">
+                        <div className="h-3 bg-gray-200 rounded w-16"></div>
+                        <div className="h-3 bg-gray-200 rounded w-20"></div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+// Format date helper
+const formatDate = (dateString, lang) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString(lang === "bn" ? "bn-BD" : "en-US", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+};
 
 export default function HeroSection() {
   const [breaking, setBreaking] = useState([]);
   const [featured, setFeatured] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const { lang } = useLanguage();
 
   useEffect(() => {
-    const fetchBreaking = async () => {
+    const fetchAllData = async () => {
+      setLoading(true);
       try {
-        const data = await getBreakingNews();
-        setBreaking(Array.isArray(data) ? data : []);
+        const [breakingData, featuredData] = await Promise.all([
+          getBreakingNews(),
+          getFeaturedNews(),
+        ]);
+        setBreaking(Array.isArray(breakingData) ? breakingData : []);
+        setFeatured(Array.isArray(featuredData) ? featuredData : []);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchBreaking();
+    fetchAllData();
   }, []);
 
-  useEffect(() => {
-    const fetchFeatured = async () => {
-      try {
-        const data = await getFeaturedNews();
-        setFeatured(Array.isArray(data) ? data : []);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchFeatured();
-  }, []);
+  if (loading) {
+    return <HeroSkeleton />;
+  }
 
   const mainNews = featured?.[0];
   const leftNews = featured?.[1];
@@ -57,20 +136,27 @@ export default function HeroSection() {
                     {getTranslatedValue(leftNews?.title, lang)}
                   </h2>
 
-                  {/* META */}
+                  {/* META - Dynamic Category & Date */}
                   <div className="flex flex-wrap items-center gap-2 text-[12px] sm:text-[13px] text-gray-600 md:mt-3 mt-1.5 border-b border-[#cfc7ba] md:pb-4 pb-3">
-                    <span>Art</span>
+                    <span className="capitalize">
+                      {getTranslatedValue(leftNews?.category, lang)}
+                    </span>
 
                     <span className="w-1 h-1 rounded-full bg-red-500" />
 
-                    <span>24/12/2024</span>
+                    <span>
+                      {formatDate(
+                        leftNews?.publishedAt || leftNews?.createdAt,
+                        lang,
+                      )}
+                    </span>
 
                     <MoveUpRight size={15} className="ml-auto text-gray-500" />
                   </div>
 
                   {/* DESCRIPTION */}
                   <div className="hidden md:block">
-                    <p className="md:mt-3 text-[15px]  leading-6  text-[#444] line-clamp-4 text-ellipsis">
+                    <p className="md:mt-3 text-[15px] leading-6 text-[#444] line-clamp-4 text-ellipsis">
                       {getTranslatedValue(leftNews?.content, lang)}
                     </p>
                   </div>
@@ -106,19 +192,26 @@ export default function HeroSection() {
                       {getTranslatedValue(mainNews?.title, lang)}
                     </h1>
 
-                    {/* META */}
+                    {/* META - Dynamic Category, Writer & Date */}
                     <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[12px] sm:text-[13px] text-gray-600 md:mt-4 mt-1">
                       <div className="w-8 sm:w-10 h-[1px] bg-black" />
 
-                      <span>Catastrophic</span>
+                      <span className="capitalize">
+                        {getTranslatedValue(mainNews?.category, lang)}
+                      </span>
 
                       <span className="w-1 h-1 rounded-full bg-red-500" />
 
-                      <span>Milea Sandy E</span>
+                      <span>{getTranslatedValue(mainNews?.writer, lang)}</span>
 
                       <span className="w-1 h-1 rounded-full bg-red-500" />
 
-                      <span>24/12/2024</span>
+                      <span>
+                        {formatDate(
+                          mainNews?.publishedAt || mainNews?.createdAt,
+                          lang,
+                        )}
+                      </span>
 
                       <MoveUpRight
                         size={16}
@@ -162,7 +255,7 @@ export default function HeroSection() {
               </span>
             </div>
 
-            {/* LIST */}
+            {/* LIST - Dynamic with Writer & Date */}
             <div className="divide-y divide-[#cfc7ba] mt-3">
               {breaking?.slice(0, 5).map((item, index) => (
                 <Link key={item?._id} href={`/news/${item?._id}`}>
@@ -170,7 +263,7 @@ export default function HeroSection() {
                     {/* NUMBER */}
                     <div className="min-w-[38px] sm:min-w-[45px]">
                       <span className="text-lg sm:text-xl leading-none italic font-bold text-[#1b1b1b]">
-                        {String(index + 1).padStart(2, "0")}
+                        {formatNumber(index + 1, lang)}
                       </span>
                     </div>
 
@@ -181,11 +274,14 @@ export default function HeroSection() {
                       </h4>
 
                       <div className="flex flex-wrap items-center gap-2 md:mt-2 mt-1 text-[11px] sm:text-[12px] text-gray-500">
-                        <span>20 Dec 2024</span>
-
+                        <span>
+                          {formatDate(
+                            item?.publishedAt || item?.createdAt,
+                            lang,
+                          )}
+                        </span>
                         <span>,</span>
-
-                        <span>John Statman</span>
+                        <span>{getTranslatedValue(item?.writer, lang)}</span>
                       </div>
                     </div>
                   </div>

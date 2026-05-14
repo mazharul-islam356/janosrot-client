@@ -23,7 +23,7 @@ export default function NewsNavbar() {
   }, []);
 
   const categories = [
-    { name: { bn: "বাংলাদেশ", en: "Bangladesh" }, slug: "bangladesh" },
+    { name: { bn: "সারাদেশ", en: "whole_country" }, slug: "bangladesh" },
     { name: { bn: "বিশ্ব", en: "World" }, slug: "world" },
     { name: { bn: "আন্তর্জাতিক", en: "International" }, slug: "international" },
 
@@ -78,7 +78,7 @@ export default function NewsNavbar() {
       hour12: lang !== "bn",
     },
   ).format(now);
-
+  const visibleCount = lang === "en" ? 10 : 12;
   return (
     <header className="w-full bg-[#f6f1e8]">
       <div className="max-w-7xl mx-auto">
@@ -151,7 +151,8 @@ export default function NewsNavbar() {
         </div>
 
         {/* CATEGORY NAV */}
-        <nav className="md:flex sticky hidden top-1 items-center justify-between border-b border-[#cfc7ba]">
+
+        <nav className="md:flex sticky top-0 items-center justify-between border-b border-[#cfc7ba] bg-[#f6f1e8] z-30">
           {/* LEFT */}
           <div className="flex items-center">
             {/* CATEGORY BUTTON */}
@@ -168,12 +169,12 @@ export default function NewsNavbar() {
             </button>
 
             {/* LINKS */}
-            <div className="hidden lg:flex items-center">
-              {categories.slice(0, 12).map((category) => (
+            <div className="hidden lg:flex items-center justify-center justify-items-center">
+              {categories.slice(0, visibleCount).map((category) => (
                 <Link
                   key={category.slug}
                   href={`/category/${category.slug}`}
-                  className="px-6 py-5 text-[15px] font-medium text-[#222] hover:bg-[#ebe3d6] transition"
+                  className="px-5 py-5 text-[15px] font-medium text-[#222] hover:bg-[#ebe3d6] transition"
                 >
                   {getTranslatedValue(category.name, lang)}
                 </Link>

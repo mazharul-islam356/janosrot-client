@@ -13,7 +13,7 @@ export default function AdBanner({ imageUrl, link }) {
   return (
     <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-0 my-4 sm:my-6">
       {/* Banner Wrapper */}
-      <div className="relative w-full h-16 sm:h-20 md:h-24 lg:h-28 overflow-hidden shadow-sm">
+      <div className="relative w-full h-16  md:h-20 lg:h-20 overflow-hidden shadow-sm">
         {/* Clickable Ad */}
         <Link href={link || "#"} target="_blank" rel="noopener noreferrer">
           <Image

@@ -138,10 +138,6 @@ export default function Politics() {
                       className="object-cover"
                     />
                   </Link>
-
-                  <div className="absolute top-2.5 left-3 bg-gray-600 p-2 rounded-full text-white text-xs">
-                    📷
-                  </div>
                 </div>
                 <Link href={`/news/${featured?._id || "#"}`}>
                   <h2 className="text-lg sm:text-xl font-semibold mt-4 leading-snug line-clamp-2">

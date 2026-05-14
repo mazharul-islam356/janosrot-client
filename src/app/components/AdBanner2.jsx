@@ -17,19 +17,19 @@ export default function AdBanner2({ imageUrl, link }) {
       </p>
 
       {/* Ad Wrapper */}
-      <div className="relative bg-gray-100 py-4 px-4 md:px-10">
+      <div className="relative bg-white py-4 px-4 md:px-5">
         <Link href={link || "#"} target="_blank" rel="noopener noreferrer">
           <Image
             src={imageUrl}
             alt="Advertisement"
-            width={728}
+            width={1500}
             height={90}
             className="
               mx-auto
               object-contain
               h-12           /* mobile (≈320x50) */
               md:h-20        /* tablet */
-              lg:h-24        /* desktop */
+              lg:h-40        /* desktop */
             "
           />
         </Link>

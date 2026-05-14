@@ -36,7 +36,7 @@ export default function NewsPage() {
   console.log(news);
   return (
     <div className="max-w-7xl mx-auto px-4 pb-10">
-      <AdBanner imageUrl="/6211266836143166852.gif" />
+      <AdBanner imageUrl="/c-ad.jpg" />
 
       {/* PAGE TITLE */}
       <div className="py-6 border-b mb-6">

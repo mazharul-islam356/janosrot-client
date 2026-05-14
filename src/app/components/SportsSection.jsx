@@ -138,7 +138,7 @@ export default function SportsSection() {
         </div>
 
         {/* BOTTOM NEWS GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 md:gap-5 gap-3 md:mt-5 mt-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 md:gap-5 gap-3 md:mt-5 mt-3">
           {bottomNews.map((news, i) => (
             <Link
               href={`/news/${news?._id || "#"}`}
