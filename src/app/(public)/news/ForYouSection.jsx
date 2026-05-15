@@ -53,7 +53,7 @@ export default function ForYouSection() {
   };
 
   return (
-    <section className="w-full py-8 sm:py-10">
+    <section className="w-full pt-8 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         {/* Header */}
         <div>
@@ -67,7 +67,7 @@ export default function ForYouSection() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {newsData.map((item, index) => (
             <div
               key={item?._id || index}

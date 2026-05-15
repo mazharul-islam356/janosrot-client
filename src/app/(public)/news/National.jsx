@@ -101,11 +101,11 @@ const National = () => {
         </h2>
 
         {/* TOP SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 md:pb-5 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 md:pb-5">
           {/* LEFT */}
-          <div>
+          <div className="bg-white h-fit">
             <Link href={`/news/${heroLeft?._id}`}>
-              <div className="overflow-hidden rounded">
+              <div className="overflow-hidden rounded-t-sm">
                 <Image
                   src={heroLeft?.featuredImage?.[0] || "/placeholder.jpg"}
                   alt={getTranslatedValue(heroLeft?.title, lang)}
@@ -115,31 +115,27 @@ const National = () => {
                 />
               </div>
 
-              <div className="mt-4 md:mt-5">
-                <h2 className="text-[22px] sm:text-[26px] md:text-3xl leading-[32px] md:leading-[48px] text-ellipsis line-clamp-2 text-[#001848]">
-                  <span className="text-red-700">
-                    {lang === "bn" ? "ইন্টারেক্টিভ" : "Interactive"}
-                  </span>{" "}
-                  / {getTranslatedValue(heroLeft?.title, lang)}
+              <div className="my-4 md:my-5 px-3 md:px-4 rounded-b-sm">
+                <h2 className="text-[20px] md:text-2xl leading-[32px] md:leading-[40px] text-ellipsis line-clamp-2 text-[#001848]">
+                  {getTranslatedValue(heroLeft?.title, lang)}
                 </h2>
 
-                <div className="mt-3 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
+                <div className="mt-2 md:mt-3 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
                   {formatFullDate(heroLeft?.publishedAt, lang)} •{" "}
                   {getTranslatedValue(heroLeft?.category, lang)}
                 </div>
 
-                <p className="mt-3 md:mt-4 text-[15px] sm:text-[16px] md:text-[18px] leading-7 md:leading-8 text-gray-700 line-clamp-4">
+                <p className="mt-2 md:mt-3 text-[15px] sm:text-[16px] md:text-[18px] leading-7 md:leading-8 text-gray-700 text-ellipsis line-clamp-3">
                   {getTranslatedValue(heroLeft?.content, lang)?.slice(0, 160)}
-                  ...
                 </p>
               </div>
             </Link>
           </div>
 
           {/* RIGHT */}
-          <div>
+          <div className="bg-white h-fit">
             <Link href={`/news/${heroRight?._id}`}>
-              <div className="overflow-hidden rounded">
+              <div className="overflow-hidden rounded-t-sm">
                 <Image
                   src={heroRight?.featuredImage?.[0] || "/placeholder.jpg"}
                   alt={getTranslatedValue(heroRight?.title, lang)}
@@ -149,19 +145,18 @@ const National = () => {
                 />
               </div>
 
-              <div className="mt-4 md:mt-5">
-                <h2 className="text-[22px] sm:text-[26px] md:text-3xl leading-[32px] md:leading-[48px] text-[#001848] line-clamp-2">
+              <div className="my-4 md:my-5 px-3 md:px-4 rounded-b-sm">
+                <h2 className="text-[22px]  md:text-2xl leading-[32px] md:leading-[40px] text-[#001848] line-clamp-2">
                   {getTranslatedValue(heroRight?.title, lang)}
                 </h2>
 
-                <div className="mt-3 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
-                  {new Date(heroRight?.createdAt).toDateString()} •{" "}
+                <div className="mt-2 md:mt-3 text-[11px] sm:text-[12px] md:text-[13px] uppercase text-gray-700 tracking-wide">
+                  {formatFullDate(heroRight?.publishedAt, lang)} •{" "}
                   {getTranslatedValue(heroRight?.category, lang)}
                 </div>
 
-                <p className="mt-3 md:mt-4 text-[15px] sm:text-[16px] md:text-[18px] leading-7 md:leading-8 text-gray-700 line-clamp-4">
+                <p className="mt-2 md:mt-3 md:mt-4 text-[15px] sm:text-[16px] md:text-[18px] leading-7 md:leading-8 text-gray-700 line-clamp-3">
                   {getTranslatedValue(heroRight?.content, lang)?.slice(0, 150)}
-                  ...
                 </p>
               </div>
             </Link>
@@ -169,11 +164,11 @@ const National = () => {
         </div>
 
         {/* BOTTOM NEWS GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pt-8 md:pt-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
           {bottomNews.map((news, index) => (
             <Link key={news?._id} href={`/news/${news?._id}`}>
-              <article className="group">
-                <div className="overflow-hidden rounded">
+              <article className="group bg-white">
+                <div className="overflow-hidden rounded-t-xs">
                   <Image
                     src={news?.featuredImage?.[0] || "/placeholder.jpg"}
                     alt={getTranslatedValue(news?.title, lang)}
@@ -183,7 +178,7 @@ const National = () => {
                   />
                 </div>
 
-                <div className="pt-4">
+                <div className="py-4 rounded-b-xs px-4">
                   <h3 className="text-[17px] md:text-[22px] leading-7 md:leading-8 text-[#001848] line-clamp-2">
                     <span className="text-teal-700">
                       {index === 1

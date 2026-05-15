@@ -84,23 +84,24 @@ export default function Politics() {
   };
 
   return (
-    <div className="py-6 sm:py-10">
+    <div className="pt-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4">
         {/* TITLE */}
-        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y bg-white border-[#cfc7ba]  text-gray-600 py-3 flex items-center justify-center gap-3">
+        <h2 className="text-xl md:text-3xl text-center font-semibold mb-6 border-y bg-white border-[#cfc7ba] text-gray-600 py-3 flex items-center justify-center gap-3">
           <span className="w-2 h-2 animate-pulse rounded-full bg-[#07626c]"></span>
 
           {t.title[lang]}
 
           <span className="w-2 h-2 animate-pulse rounded-full bg-[#07626c]"></span>
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 md:gap-6 gap-4">
           {/* LEFT */}
           <div className="space-y-4 hidden md:block sm:space-y-5">
             {leftNews.map((news, i) => (
               <div
                 key={i}
-                className="flex gap-3 sm:gap-4 border-b pb-3 sm:pb-4"
+                className="flex gap-3 sm:gap-4 border-b p-3 rounded bg-white"
               >
                 <div className="flex-1">
                   <Link href={`/news/${news?._id || "#"}`}>
@@ -134,44 +135,45 @@ export default function Politics() {
           {/* CENTER FEATURED */}
           <div className="lg:border-l lg:border-r lg:border-gray-300 lg:px-4">
             {featured && (
-              <Link href={`/news/${featured?._id || "#"}`}>
-                <div className="relative w-full h-52 sm:h-64 md:h-72">
-                  <Link href={`/news/${featured?._id || "#"}`}>
+              <div className="bg-white">
+                <Link href={`/news/${featured?._id || "#"}`}>
+                  <div className="relative w-full h-52 sm:h-64 md:h-72">
                     <Image
                       src={featured?.featuredImage?.[0] || "/placeholder.jpg"}
                       fill
                       alt={getTranslatedValue(featured?.title, lang)}
                       className="object-cover"
                     />
-                  </Link>
-                </div>
-                <Link href={`/news/${featured?._id || "#"}`}>
-                  <h2 className="text-lg sm:text-xl font-semibold mt-4 leading-snug line-clamp-2">
-                    {getTranslatedValue(featured?.title, lang)}
-                  </h2>
+                  </div>
+
+                  <div className="p-4">
+                    <h2 className="text-lg sm:text-xl font-semibold mt-2 leading-snug line-clamp-2">
+                      {getTranslatedValue(featured?.title, lang)}
+                    </h2>
+
+                    <p className="text-sm text-gray-600 mt-2 line-clamp-3">
+                      {getTranslatedValue(featured?.content, lang)}
+                    </p>
+
+                    <p className="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                      <History size={13} />
+                      {formatDateRelative(
+                        featured?.publishedAt || featured?.createdAt,
+                        lang,
+                      )}
+                    </p>
+                  </div>
                 </Link>
-
-                <p className="text-sm text-gray-600 mt-2 line-clamp-3">
-                  {getTranslatedValue(featured?.content, lang)}
-                </p>
-
-                <p className="text-xs text-gray-500 mt-2 flex items-center gap-1">
-                  <History size={13} />
-                  {formatDateRelative(
-                    featured?.publishedAt || featured?.createdAt,
-                    lang,
-                  )}
-                </p>
-              </Link>
+              </div>
             )}
           </div>
 
           {/* RIGHT */}
-          <div className="space-y-4 sm:space-y-5 mt-2 lg:mt-0">
+          <div className="md:space-y-4 space-y-3">
             {rightNews.map((news, i) => (
               <div
                 key={i}
-                className="flex flex-row-reverse gap-3 sm:gap-4 border-b pb-3 sm:pb-4"
+                className="flex flex-row-reverse gap-3 sm:gap-4 border-b p-3 rounded bg-white"
               >
                 <div className="flex-1">
                   <Link href={`/news/${news?._id || "#"}`}>

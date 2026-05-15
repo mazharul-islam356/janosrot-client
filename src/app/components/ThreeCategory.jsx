@@ -69,7 +69,7 @@ export default function ThreeCategorySection() {
           return (
             <div key={idx}>
               {/* TOP BAR */}
-              <div className="flex items-center justify-between bg-[#efefef] border border-[#dcdcdc] mb-2">
+              <div className="flex items-center justify-between bg-[#ffffff] border border-[#dcdcdc] mb-2">
                 <h2 className="text-[#23727b] text-base sm:text-lg md:text-xl font-medium px-3 md:px-4 py-2">
                   {section.title[lang]}
                 </h2>
@@ -83,7 +83,7 @@ export default function ThreeCategorySection() {
               {mainNews && (
                 <Link
                   href={`/news/${mainNews?._id || "#"}`}
-                  className="block bg-[#f3f3f3] border border-[#e3e3e3] p-2 sm:p-3"
+                  className="block bg-[#ffffff] border border-[#e3e3e3] p-2 sm:p-3"
                 >
                   <div className="relative w-full h-[220px] sm:h-[260px] md:h-[280px] overflow-hidden">
                     <Image
@@ -106,7 +106,7 @@ export default function ThreeCategorySection() {
                   <Link
                     href={`/news/${news?._id || "#"}`}
                     key={i}
-                    className="flex items-start gap-2 sm:gap-3 bg-[#f3f3f3] border border-[#e3e3e3] px-2 sm:px-3 py-3 sm:py-4 hover:bg-[#ececec] transition"
+                    className="flex items-start gap-2 sm:gap-3 bg-[#ffffff] border border-[#e3e3e3] px-2 sm:px-3 py-3 sm:py-4 hover:bg-[#ececec] transition"
                   >
                     <span className="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-[#ff2d2d] mt-[5px] shrink-0"></span>
 

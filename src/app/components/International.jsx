@@ -100,9 +100,9 @@ export default function International() {
         {/* LEFT SIDE */}
         <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-2 md:gap-6 gap-3">
           {firstTwo.map((news, i) => (
-            <div key={i} className="overflow-hidden">
+            <div key={i} className="overflow-hidden bg-white">
               <Link href={`/news/${news?._id || "#"}`}>
-                <div className="relative w-full h-32  md:h-56 overflow-hidden md:rounded">
+                <div className="relative w-full h-32 md:h-56 overflow-hidden md:rounded-t-sm">
                   <Image
                     src={news?.featuredImage?.[0] || "/placeholder.jpg"}
                     fill
@@ -112,14 +112,14 @@ export default function International() {
                 </div>
               </Link>
 
-              <div className="md:py-4 pt-2">
+              <div className="bg-white md:py-4 pt-2 px-4">
                 <Link href={`/news/${news?._id || "#"}`}>
-                  <h3 className="text-[16px] md:text-xl font-bold leading-7 md:leading-snug line-clamp-2 hover:text-red-500 transition">
+                  <h3 className="text-[16px] md:text-xl font-bold leading-7 md:leading-snug line-clamp-2 hover:text-teal-500 transition bg-white">
                     {getTranslatedValue(news?.title, lang)}
                   </h3>
                 </Link>
 
-                <p className="text-gray-600 text-[12px] sm:text-[15px] md:mt-2 line-clamp-3  md:line-clamp-6 leading-6">
+                <p className="text-gray-600 text-[12px] sm:text-[15px] md:mt-2 line-clamp-3 md:line-clamp-6 leading-6 bg-white">
                   {getTranslatedValue(news?.content, lang)}
                 </p>
               </div>
@@ -133,7 +133,7 @@ export default function International() {
             <Link
               href={`/news/${news?._id || "#"}`}
               key={i}
-              className="flex gap-3 md:p-3 py-3 rounded hover:bg-gray-50 transition"
+              className="flex gap-3 md:p-3 pl-3 py-3 rounded hover:bg-gray-50 transition bg-white"
             >
               <div className="relative w-28 sm:w-32 lg:w-28 h-20 sm:h-24 lg:h-20 flex-shrink-0 overflow-hidden md:rounded">
                 <Image
@@ -144,12 +144,12 @@ export default function International() {
                 />
               </div>
 
-              <div className="flex flex-col justify-between flex-1">
-                <h4 className="text-[14px] sm:text-[15px] font-semibold leading-5 sm:leading-6 line-clamp-3 hover:text-red-500 transition">
+              <div className="flex flex-col justify-between flex-1 bg-white px-4">
+                <h4 className="text-[14px] sm:text-[15px] font-semibold leading-5 sm:leading-6 line-clamp-3 hover:text-teal-500 transition bg-white">
                   {getTranslatedValue(news?.title, lang)}
                 </h4>
 
-                <p className="text-[11px] sm:text-xs text-gray-500 mt-2 flex items-center gap-1">
+                <p className="text-[11px] sm:text-xs text-gray-500 mt-2 flex items-center gap-1 bg-white">
                   <History size={13} />
                   {formatDateRelative(
                     news?.publishedAt || news?.createdAt,

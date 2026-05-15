@@ -14,7 +14,7 @@ const HeroSkeleton = () => {
   return (
     <div className="bg-[#f6f1e8]">
       <section className="max-w-7xl mx-auto px-4 lg:px-0 md:pb-5 pb-3 pt-3">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.8fr_1fr] md:border border-[#cfc7ba] md:bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.8fr_1fr] md:border border-[#cfc7ba] bg-white">
           {/* LEFT CARD SKELETON */}
           <div className="border-b lg:border-b-0 lg:border-r border-[#cfc7ba] md:p-4 pt-4">
             <div className="animate-pulse">
@@ -130,7 +130,7 @@ export default function HeroSection() {
   return (
     <div className="bg-[#f6f1e8]">
       <section className="max-w-7xl mx-auto px-4 lg:px-0 md:pb-5 pb-3 pt-3">
-        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.8fr_1fr] md:border border-[#cfc7ba] md:bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.8fr_1fr] md:border border-[#cfc7ba] bg-white px-4 md:px-0 rounded md:rounded-none">
           {/* LEFT CARD */}
           <div className="border-b lg:border-b-0 lg:border-r border-[#cfc7ba] md:p-4 pt-4">
             {leftNews && (
