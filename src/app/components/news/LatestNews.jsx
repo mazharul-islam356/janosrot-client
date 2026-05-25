@@ -88,7 +88,7 @@ export default function LatestNews() {
               <div className="p-3 sm:p-4 flex flex-col gap-2">
                 {/* Title */}
                 <Link href={`/news/${item?._id || "#"}`}>
-                  <h3 className="font-semibold text-sm sm:text-[15px] leading-snug line-clamp-2 group-hover:text-red-700 transition">
+                  <h3 className="font-semibold text-sm sm:text-[15px] leading-snug line-clamp-2 group-hover:text-teal-700 transition">
                     {getTranslatedValue(item?.title, lang)}
                   </h3>
                 </Link>

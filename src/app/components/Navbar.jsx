@@ -75,7 +75,7 @@ export default function NewsNavbar() {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
-      hour12: lang !== "bn",
+      hour12: true,
     },
   ).format(now);
   const visibleCount = lang === "en" ? 10 : 12;
@@ -129,7 +129,6 @@ export default function NewsNavbar() {
           </div>
         </div>
 
-        {/* MOBILE HEADER */}
         <div className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-[#cfc7ba]">
           <button onClick={() => setIsOpen(true)}>
             <Menu size={26} />
@@ -150,11 +149,8 @@ export default function NewsNavbar() {
           </button>
         </div>
 
-        {/* CATEGORY NAV */}
         <nav className="md:flex hidden sticky top-0 z-50 items-center justify-between border-b border-[#cfc7ba] bg-[#f6f1e8]">
-          {/* LEFT */}
           <div className="flex items-center">
-            {/* CATEGORY BUTTON */}
             <button className="hidden lg:flex items-center gap-1 px-8 py-5 border-r border-[#cfc7ba] hover:bg-[#ebe3d6] transition">
               <House size={18} />
             </button>
