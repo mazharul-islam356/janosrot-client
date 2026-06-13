@@ -68,7 +68,25 @@ export default function NewsDetailsPage() {
     return (
       <div className="flex items-center justify-center h-screen bg-white">
         <div className="flex flex-col items-center gap-4">
-          <Image src="/janosrot.png" alt="logo" width={120} height={120} />
+          <Image
+            src="/janosrot.png"
+            alt="logo"
+            width={120}
+            height={120}
+            className="animate-pulse"
+          />
+
+          <div className="flex gap-2">
+            <span className="w-2.5 h-2.5 bg-teal-500 rounded-full animate-bounce" />
+            <span
+              className="w-2.5 h-2.5 bg-teal-500 rounded-full animate-bounce"
+              style={{ animationDelay: "0.15s" }}
+            />
+            <span
+              className="w-2.5 h-2.5 bg-teal-500 rounded-full animate-bounce"
+              style={{ animationDelay: "0.3s" }}
+            />
+          </div>
         </div>
       </div>
     );
