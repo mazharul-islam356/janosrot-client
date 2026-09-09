@@ -12,7 +12,7 @@ import { useParams } from "next/navigation";
 import { Calendar, PenLine } from "lucide-react";
 
 const categories = [
-  { name: { bn: "সারাদেশ", en: "whole_country" }, slug: "bangladesh" },
+  { name: { bn: "সারাদেশ", en: "whole_country" }, slug: "whole_country" },
   { name: { bn: "বিশ্ব", en: "World" }, slug: "world" },
   { name: { bn: "আন্তর্জাতিক", en: "International" }, slug: "international" },
   { name: { bn: "রাজনীতি", en: "Politics" }, slug: "politics" },

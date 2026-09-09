@@ -18,15 +18,14 @@ import Image from "next/image";
 import { Eye } from "lucide-react";
 
 const categoriesList = [
-  { name: { bn: "বাংলাদেশ", en: "Bangladesh" }, slug: "bangladesh" },
+  { name: { bn: "সারাদেশ", en: "whole_country" }, slug: "whole_country" },
   { name: { bn: "বিশ্ব", en: "World" }, slug: "world" },
   { name: { bn: "আন্তর্জাতিক", en: "International" }, slug: "international" },
   { name: { bn: "রাজনীতি", en: "Politics" }, slug: "politics" },
-  { name: { bn: "দুর্নীতি", en: "Corruption" }, slug: "corruption" },
   { name: { bn: "মতামত", en: "Opinion" }, slug: "opinion" },
+  { name: { bn: "জাতীয়", en: "National" }, slug: "national" },
   { name: { bn: "বাণিজ্য", en: "Business" }, slug: "business" },
   { name: { bn: "অর্থনীতি", en: "Economy" }, slug: "economy" },
-  { name: { bn: "জাতীয়", en: "National" }, slug: "national" },
   { name: { bn: "প্রযুক্তি", en: "Technology" }, slug: "technology" },
   { name: { bn: "বিজ্ঞান", en: "Science" }, slug: "science" },
   { name: { bn: "খেলা", en: "Sports" }, slug: "sports" },
@@ -35,6 +34,7 @@ const categoriesList = [
   { name: { bn: "শিক্ষা", en: "Education" }, slug: "education" },
   { name: { bn: "চাকরি", en: "Jobs" }, slug: "jobs" },
   { name: { bn: "ধর্ম", en: "Religion" }, slug: "religion" },
+  { name: { bn: "দুর্নীতি", en: "Corruption" }, slug: "corruption" },
   { name: { bn: "স্বাস্থ্য", en: "Health" }, slug: "health" },
   { name: { bn: "পরিবেশ", en: "Environment" }, slug: "environment" },
   { name: { bn: "অপরাধ", en: "Crime" }, slug: "crime" },

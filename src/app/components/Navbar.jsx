@@ -23,7 +23,7 @@ export default function NewsNavbar() {
   }, []);
 
   const categories = [
-    { name: { bn: "সারাদেশ", en: "whole_country" }, slug: "bangladesh" },
+    { name: { bn: "সারাদেশ", en: "whole_country" }, slug: "whole_country" },
 
     { name: { bn: "আন্তর্জাতিক", en: "International" }, slug: "international" },
 

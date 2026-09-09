@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import Image from "next/image";
 
 const categories = [
-  { bn: "বাংলাদেশ", en: "Bangladesh" },
+  { bn: "সারাদেশ", en: "Whole Country" },
   { bn: "বিশ্ব", en: "World" },
   { bn: "আন্তর্জাতিক", en: "International" },
   { bn: "রাজনীতি", en: "Politics" },
@@ -28,7 +28,7 @@ const categories = [
   { bn: "শিক্ষা", en: "Education" },
   { bn: "চাকরি", en: "Jobs" },
   { bn: "ধর্ম", en: "Religion" },
-  { bn: "দুর্নীতি", en: "corruption" },
+  { bn: "দুর্নীতি", en: "Corruption" },
   { bn: "স্বাস্থ্য", en: "Health" },
   { bn: "পরিবেশ", en: "Environment" },
   { bn: "অপরাধ", en: "Crime" },
