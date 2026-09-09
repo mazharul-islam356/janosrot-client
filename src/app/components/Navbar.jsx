@@ -149,7 +149,7 @@ export default function NewsNavbar() {
           </button>
         </div>
 
-        <nav className="md:flex hidden sticky top-0 z-50 items-center justify-between border-b border-[#cfc7ba] bg-[#f6f1e8]">
+        <nav className="md:flex hidden sticky top-0 z-0 items-center justify-between border-b border-[#cfc7ba] bg-[#f6f1e8]">
           <div className="flex items-center">
             <button className="hidden lg:flex items-center gap-1 px-8 py-5 border-r border-[#cfc7ba] hover:bg-[#ebe3d6] transition">
               <House size={18} />
@@ -158,7 +158,7 @@ export default function NewsNavbar() {
             {/* MENU */}
             <button
               onClick={() => setIsOpen(true)}
-              className="px-5 py-5 border-r border-[#cfc7ba] hover:bg-[#ebe3d6] transition"
+              className="px-5 py-5 cursor-pointer border-r border-[#cfc7ba] hover:bg-[#ebe3d6] transition"
             >
               <Menu size={22} strokeWidth={1.8} />
             </button>
@@ -225,17 +225,6 @@ export default function NewsNavbar() {
               {getTranslatedValue(category.name, lang)}
             </Link>
           ))}
-        </div>
-
-        {/* FOOTER */}
-        <div className="absolute bottom-0 left-0 w-full p-5 border-t">
-          <button className="w-full flex items-center justify-center gap-2 border rounded-full py-3">
-            <User size={18} />
-
-            <span className="font-medium">
-              {lang === "en" ? "Login" : "লগইন"}
-            </span>
-          </button>
         </div>
       </div>
     </header>

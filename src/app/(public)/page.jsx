@@ -108,19 +108,16 @@ export default function HomePage() {
       {/* <BreakingTicker news={news.slice(0, 5)} /> */}
 
       <HeroSection featured={featured} />
-      <AdBanner imageUrl="/ad-2.gif" />
+      <AdBanner imageUrl="/top-ad.jpg" />
       <LatestNews />
       <National />
       <International />
-      <AdBanner2
-        link="https://www.youtube.com/watch?v=q3spaWr_NgE"
-        imageUrl="/meril-onosthan.jpg"
-      />
+      <AdBanner2 link="https://www.grameenphone.com" imageUrl="/gp-ad.jpg" />
       <Politics />
       <Entertainment />
       {/* <National /> */}
       <SportsSection />
-      <AdBanner imageUrl="/15921561955530599699.gif" />
+      <AdBanner imageUrl="/nagad-ad.gif" />
       <FeaturedGrid />
       <ForYouSection />
       <ThreeCategorySection />
