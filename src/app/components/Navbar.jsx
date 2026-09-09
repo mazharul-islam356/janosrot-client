@@ -24,7 +24,7 @@ export default function NewsNavbar() {
 
   const categories = [
     { name: { bn: "সারাদেশ", en: "whole_country" }, slug: "bangladesh" },
-    { name: { bn: "বিশ্ব", en: "World" }, slug: "world" },
+
     { name: { bn: "আন্তর্জাতিক", en: "International" }, slug: "international" },
 
     { name: { bn: "রাজনীতি", en: "Politics" }, slug: "politics" },
